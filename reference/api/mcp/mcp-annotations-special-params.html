@@ -1,0 +1,1655 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>MCP Annotations Special Parameters :: Spring AI Reference</title>
+    <link rel="canonical" href="https://docs.spring.io/spring-ai/reference/api/mcp/mcp-annotations-special-params.html">
+    <link rel="prev" href="mcp-annotations-server.html">
+    <link rel="next" href="mcp-annotations-examples.html">
+    <meta name="generator" content="Antora 3.1.15">
+    <script>
+!function (theme, navWidth) {
+  if (theme === 'dark') document.documentElement.classList.add('dark-theme')
+  if (navWidth) document.documentElement.style.setProperty('--nav-width', `${navWidth}px`)
+}(localStorage && localStorage.getItem('theme') || (matchMedia('(prefers-color-scheme: dark)')?.matches && 'dark'),
+  localStorage && localStorage.getItem('nav-width'))
+    </script>
+    <link rel="stylesheet" href="../../_/css/site.css">
+    <link rel="stylesheet" href="../../_/css/vendor/search.css">
+    <link rel="stylesheet" href="../../_/css/vendor/page-search.css">
+    <link rel="stylesheet" href="../../_/css/vendor/asciidoctor-tabs.css">
+
+    <meta name="antora-ui-version" content="v0.4.17"> 
+    <meta name="version" content="2.0.0">
+    <meta name="component" content="ai">
+    <meta name="latest-version" content="false">
+    <link rel="icon" href="../../_/img/favicon.ico" type="image/vnd.microsoft.icon">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://spring.io">
+        <img
+          id="springlogo"
+          class="block"
+          src="../../_/img/spring-logo.svg"
+          alt="Spring"
+        />
+      </a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Why Spring</a>
+          <div class="navbar-dropdown">
+            <a
+              class="navbar-item"
+              href="https://spring.io/why-spring"
+            >Overview</a>
+            <a
+              class="navbar-item"
+              href="https://spring.io/microservices"
+            >Microservices</a>
+            <a
+              class="navbar-item"
+              href="https://spring.io/reactive"
+            >Reactive</a>
+            <a class="navbar-item" href="https://spring.io/event-driven">Event
+              Driven</a>
+            <a class="navbar-item" href="https://spring.io/cloud">Cloud</a>
+            <a class="navbar-item" href="https://spring.io/web-applications">Web
+              Applications</a>
+            <a
+              class="navbar-item"
+              href="https://spring.io/serverless"
+            >Serverless</a>
+            <a class="navbar-item" href="https://spring.io/batch">Batch</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Learn</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://spring.io/learn">Overview</a>
+            <a
+              class="navbar-item"
+              href="https://spring.io/quickstart"
+            >Quickstart</a>
+            <a class="navbar-item" href="https://spring.io/guides">Guides</a>
+            <a class="navbar-item" href="https://spring.io/blog">Blog</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Projects</a>
+          <div class="navbar-dropdown" style="min-width: 280px">
+            <a
+              class="navbar-item"
+              href="https://spring.io/projects"
+            >Overview</a>
+            <a
+              class="navbar-item"
+              href="https://spring.io/projects/spring-boot"
+            >Spring Boot</a>
+            <a
+              class="navbar-item"
+              href="https://spring.io/projects/spring-framework"
+            >Spring Framework</a>
+            <a
+              class="navbar-item"
+              href="https://spring.io/projects/spring-cloud"
+            >Spring Cloud</a>
+            <a
+              class="navbar-item"
+              href="https://spring.io/projects/spring-cloud-dataflow"
+            >Spring Cloud Data Flow</a>
+            <a
+              class="navbar-item"
+              href="https://spring.io/projects/spring-data"
+            >Spring Data</a>
+            <a
+              class="navbar-item"
+              href="https://spring.io/projects/spring-integration"
+            >Spring Integration</a>
+            <a
+              class="navbar-item"
+              href="https://spring.io/projects/spring-batch"
+            >Spring Batch</a>
+            <a
+              class="navbar-item"
+              href="https://spring.io/projects/spring-security"
+            >Spring Security</a>
+            <a
+              class="navbar-item navbar-item-special"
+              href="https://spring.io/projects"
+            >View all projects</a>
+            <li class="navbar-item navbar-item-special-3">DEVELOPMENT TOOLS</li>
+            <a class="navbar-item" href="https://spring.io/tools">Spring Tools 4</a>
+            <a
+              class="navbar-item navbar-item-special-2"
+              href="https://start.spring.io"
+            >Spring Initializr
+              <svg
+                class="external-link-icon"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 16 16"
+              ><polyline
+                  points="15 10.94 15 15 1 15 1 1 5.06 1"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-miterlimit="10"
+                  stroke-width="2"
+                ></polyline><polyline
+                  points="8.93 1 15 1 15 7.07"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-miterlimit="10"
+                  stroke-width="2"
+                ></polyline><line
+                  x1="15"
+                  y1="1"
+                  x2="8"
+                  y2="8"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-miterlimit="10"
+                  stroke-width="2"
+                ></line></svg></a>
+          </div>
+        </div>
+
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Academy</a>
+          <div class="navbar-dropdown">
+            <a
+              class="navbar-item"
+              href="https://spring.academy/courses"
+            >Courses</a>
+            <a
+              class="navbar-item"
+              href="https://spring.academy/learning-path"
+            >Get Certified</a>
+          </div>
+        </div>
+
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Solutions</a>
+          <div class="navbar-dropdown lg">
+            <a class="navbar-item" href="https://spring.io/solutions">Overview</a>
+            <a class="navbar-item" href="https://spring.io/support">Spring Runtime</a>
+            <a class="navbar-item" href="https://spring.io/consulting">Spring Consulting</a>
+            <a class="navbar-item" href="https://spring.academy/teams">Spring Academy For Teams</a>
+            <a class="navbar-item" href="https://spring.io/security">Security Advisories</a>
+          </div>
+        </div>
+
+        <div class="navbar-item has-dropdown is-hoverable is-community">
+          <a class="navbar-link" href="#">Community</a>
+          <div class="navbar-dropdown">
+            <a
+              class="navbar-item"
+              href="https://spring.io/community"
+            >Overview</a>
+            <a class="navbar-item" href="https://spring.io/events">Events</a>
+            <a class="navbar-item" href="https://spring.io/team">Team</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <label class="theme-toggler">
+      <input
+        type="checkbox"
+        type="checkbox"
+        id="switch-theme-checkbox"
+        name="switch-theme-checkbox"
+      />
+      <span class="icon"><svg
+          aria-hidden="true"
+          focusable="false"
+          data-prefix="fas"
+          data-icon="moon"
+          class="svg-inline--fa fa-moon moon"
+          role="img"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 384 512"
+        ><path
+            fill="currentColor"
+            d="M223.5 32C100 32 0 132.3 0 256S100 480 223.5 480c60.6 0 115.5-24.2 155.8-63.4c5-4.9 6.3-12.5 3.1-18.7s-10.1-9.7-17-8.5c-9.8 1.7-19.8 2.6-30.1 2.6c-96.9 0-175.5-78.8-175.5-176c0-65.8 36-123.1 89.3-153.3c6.1-3.5 9.2-10.5 7.7-17.3s-7.3-11.9-14.3-12.5c-6.3-.5-12.6-.8-19-.8z"
+          ></path>
+        </svg>
+        <svg
+          aria-hidden="true"
+          focusable="false"
+          data-prefix="fas"
+          data-icon="sun"
+          class="svg-inline--fa fa-sun sun"
+          role="img"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 512 512"
+        ><path
+            fill="currentColor"
+            d="M361.5 1.2c5 2.1 8.6 6.6 9.6 11.9L391 121l107.9 19.8c5.3 1 9.8 4.6 11.9 9.6s1.5 10.7-1.6 15.2L446.9 256l62.3 90.3c3.1 4.5 3.7 10.2 1.6 15.2s-6.6 8.6-11.9 9.6L391 391 371.1 498.9c-1 5.3-4.6 9.8-9.6 11.9s-10.7 1.5-15.2-1.6L256 446.9l-90.3 62.3c-4.5 3.1-10.2 3.7-15.2 1.6s-8.6-6.6-9.6-11.9L121 391 13.1 371.1c-5.3-1-9.8-4.6-11.9-9.6s-1.5-10.7 1.6-15.2L65.1 256 2.8 165.7c-3.1-4.5-3.7-10.2-1.6-15.2s6.6-8.6 11.9-9.6L121 121 140.9 13.1c1-5.3 4.6-9.8 9.6-11.9s10.7-1.5 15.2 1.6L256 65.1 346.3 2.8c4.5-3.1 10.2-3.7 15.2-1.6zM160 256a96 96 0 1 1 192 0 96 96 0 1 1 -192 0zm224 0a128 128 0 1 0 -256 0 128 128 0 1 0 256 0z"
+          ></path>
+        </svg></span>
+      <span class="text">light</span>
+    </label>
+  </nav>
+</header>
+<script>
+!function (theme) {
+  if (theme === 'dark') {
+    document.getElementById('switch-theme-checkbox').parentElement.classList.add('active')
+  }
+}(localStorage && localStorage.getItem('theme') || (matchMedia('(prefers-color-scheme: dark)')?.matches && 'dark'))
+</script>
+<div class="body">
+<div class="nav-container" data-component="ai" data-version="2.0.0">
+  <aside class="nav">
+    <div class="panels">
+      <div class="nav-panel-menu is-active" data-panel="menu">
+        <nav class="nav-menu">
+<div class="context">
+  <span class="title">Spring AI</span>
+  <span class="version">2.0.0</span>
+  <button class="browse-version" id="browse-version">
+    <svg
+      height="24px"
+      id="Layer_1"
+      style="enable-background:new 0 0 512 512;"
+      version="1.1"
+      viewBox="0 0 512 512"
+      width="24px"
+      xml:space="preserve"
+    ><g><path
+          d="M256,224c-17.7,0-32,14.3-32,32s14.3,32,32,32c17.7,0,32-14.3,32-32S273.7,224,256,224L256,224z"
+        ></path><path
+          d="M128.4,224c-17.7,0-32,14.3-32,32s14.3,32,32,32c17.7,0,32-14.3,32-32S146,224,128.4,224L128.4,224z"
+        ></path><path
+          d="M384,224c-17.7,0-32,14.3-32,32s14.3,32,32,32s32-14.3,32-32S401.7,224,384,224L384,224z"
+        ></path></g></svg>
+  </button>
+  <div class="search">
+  <button class="DocSearch-Button search-button">
+    <svg enable-background="new 0 0 32 32" id="Glyph" version="1.1" viewBox="0 0 32 32" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+      <path d="M27.414,24.586l-5.077-5.077C23.386,17.928,24,16.035,24,14c0-5.514-4.486-10-10-10S4,8.486,4,14  s4.486,10,10,10c2.035,0,3.928-0.614,5.509-1.663l5.077,5.077c0.78,0.781,2.048,0.781,2.828,0  C28.195,26.633,28.195,25.367,27.414,24.586z M7,14c0-3.86,3.14-7,7-7s7,3.14,7,7s-3.14,7-7,7S7,17.86,7,14z" id="XMLID_223_"/>
+    </svg>
+    <span>Search</span>
+    <span class="search-key"></span>
+  </button>
+</div>
+</div><ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link"  href="../../index.html">Overview</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link"  href="../../concepts.html">AI Concepts</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link"  href="../../getting-started.html">Getting Started</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Reference</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link"  href="../chatclient.html">Chat Client API</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link"  href="../advisors.html">Advisors</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link"  href="../advisors-recursive.html">Recursive Advisors</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link"  href="../prompt.html">Prompts</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link"  href="../structured-output-converter.html">Structured Output</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link"  href="../multimodality.html">Multimodality</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link"  href="../index.html">Models</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link"  href="../chatmodel.html">Chat Models</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link"  href="../chat/comparison.html">Chat Models Comparison</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link"  href="../chat/bedrock-converse.html">Amazon Bedrock Converse</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link"  href="../chat/anthropic-chat.html">Anthropic</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link"  href="../chat/azure-openai-chat.html">Azure OpenAI</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link"  href="../chat/deepseek-chat.html">DeepSeek</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link"  href="../chat/dmr-chat.html">Docker Model Runner</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link"  href="../chat/google-genai-chat.html">Google GenAI</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link"  href="../chat/groq-chat.html">Groq</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link"  href="../chat/mistralai-chat.html">Mistral AI</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link"  href="../chat/minimax-chat.html">MiniMax</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link"  href="../chat/nvidia-chat.html">NVIDIA</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link"  href="../chat/ollama-chat.html">Ollama</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link"  href="../chat/perplexity-chat.html">Perplexity AI</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link"  href="../chat/oci-genai-chat.html">OCI Generative AI</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link"  href="../chat/openai-chat.html">OpenAI</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link"  href="../embeddings.html">Embedding Models</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link"  href="../bedrock.html">Amazon Bedrock</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="5">
+    <a class="nav-link"  href="../embeddings/bedrock-cohere-embedding.html">Cohere</a>
+  </li>
+  <li class="nav-item" data-depth="5">
+    <a class="nav-link"  href="../embeddings/bedrock-titan-embedding.html">Titan</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link"  href="../embeddings/azure-openai-embeddings.html">Azure OpenAI</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link"  href="../embeddings/google-genai-embeddings-text.html">Google GenAI Text Embedding</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link"  href="../embeddings/mistralai-embeddings.html">Mistral AI</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link"  href="../embeddings/oci-genai-embeddings.html">OCI GenAI</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link"  href="../embeddings/ollama-embeddings.html">Ollama</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link"  href="../embeddings/onnx.html">(ONNX) Transformers</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link"  href="../embeddings/openai-embeddings.html">OpenAI</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link"  href="../embeddings/postgresml-embeddings.html">PostgresML</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">VertexAI</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="5">
+    <a class="nav-link"  href="../embeddings/vertexai-embeddings-text.html">Text Embedding</a>
+  </li>
+  <li class="nav-item" data-depth="5">
+    <a class="nav-link"  href="../embeddings/vertexai-embeddings-multimodal.html">Multimodal Embedding</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link"  href="../imageclient.html">Image Models</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link"  href="../image/azure-openai-image.html">Azure OpenAI</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link"  href="../image/openai-image.html">OpenAI</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link"  href="../image/stabilityai-image.html">Stability</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link"  href="../audio.html">Audio Models</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link"  href="../audio/transcriptions.html">Transcription API</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="5">
+    <a class="nav-link"  href="../audio/transcriptions/azure-openai-transcriptions.html">Azure OpenAI</a>
+  </li>
+  <li class="nav-item" data-depth="5">
+    <a class="nav-link"  href="../audio/transcriptions/openai-transcriptions.html">OpenAI</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link"  href="../audio/speech.html">Text-To-Speech (TTS) API</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="5">
+    <a class="nav-link"  href="../audio/speech/openai-speech.html">OpenAI</a>
+  </li>
+  <li class="nav-item" data-depth="5">
+    <a class="nav-link"  href="../audio/speech/elevenlabs-speech.html">ElevenLabs</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link"  href="../moderation.html">Moderation Models</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link"  href="../moderation/openai-moderation.html">OpenAI</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link"  href="../moderation/mistral-ai-moderation.html">Mistral AI</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link"  href="../chat-memory.html">Chat Memory</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link"  href="../tools.html">Tool Calling</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link"  href="mcp-overview.html">Model Context Protocol (MCP)</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link"  href="mcp-client-boot-starter-docs.html">MCP Client Boot Starters</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link"  href="mcp-server-boot-starter-docs.html">MCP Server Boot Starters</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link"  href="mcp-stdio-sse-server-boot-starter-docs.html">STDIO and SSE MCP Servers</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link"  href="mcp-streamable-http-server-boot-starter-docs.html">Streamable-HTTP MCP Servers</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link"  href="mcp-stateless-server-boot-starter-docs.html">Stateless Streamable-HTTP MCP Servers</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link"  href="mcp-security.html">MCP Security (WIP)</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link"  href="mcp-annotations-overview.html">MCP Annotations</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link"  href="mcp-annotations-client.html">Client Annotations</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link"  href="mcp-annotations-server.html">Server Annotations</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="4">
+    <a class="nav-link"  href="mcp-annotations-special-params.html">Special Parameters</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link"  href="mcp-annotations-examples.html">MCP Annotations Examples</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link"  href="../retrieval-augmented-generation.html">Retrieval Augmented Generation (RAG)</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link"  href="../etl-pipeline.html">ETL Pipeline</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link"  href="../testing.html">Model Evaluation</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link"  href="../vectordbs.html">Vector Databases</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link"  href="../vectordbs/azure.html">Azure AI Service</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link"  href="../vectordbs/azure-cosmos-db.html">Azure Cosmos DB</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link"  href="../vectordbs/bedrock-knowledge-base.html">Amazon Bedrock Knowledge Base</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link"  href="../vectordbs/apache-cassandra.html">Apache Cassandra Vector Store</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link"  href="../vectordbs/chroma.html">Chroma</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link"  href="../vectordbs/couchbase.html">Couchbase</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link"  href="../vectordbs/elasticsearch.html">Elasticsearch</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link"  href="../vectordbs/gemfire.html">GemFire</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link"  href="../vectordbs/mariadb.html">MariaDB Vector Store</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link"  href="../vectordbs/milvus.html">Milvus</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link"  href="../vectordbs/mongodb.html">MongoDB Atlas</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link"  href="../vectordbs/neo4j.html">Neo4j</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link"  href="../vectordbs/opensearch.html">OpenSearch</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link"  href="../vectordbs/oracle.html">Oracle</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link"  href="../vectordbs/pgvector.html">PGvector</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link"  href="../vectordbs/pinecone.html">Pinecone</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link"  href="../vectordbs/qdrant.html">Qdrant</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link"  href="../vectordbs/redis.html">Redis</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link"  href="../vectordbs/typesense.html">Typesense</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link"  href="../vectordbs/weaviate.html">Weaviate</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link"  href="../vectordbs/s3-vector-store.html">S3 Vector Store</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link"  href="../../observability/index.html">Observability</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link"  href="../docker-compose.html">Development-time Services</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Testing</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link"  href="../testcontainers.html">Testcontainers</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Guides</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link"  href="https://github.com/spring-ai-community/awesome-spring-ai">Awesome Spring AI</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link"  href="../../guides/getting-started-mcp.html">Getting Started with MCP</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link"  href="../../guides/dynamic-tool-search.html">Dynamic Tool Discovery</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link"  href="../../guides/llm-as-judge.html">LLM-as-a-Judge Evaluation</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link"  href="../chat/prompt-engineering-patterns.html">Prompt Engineering Patterns</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link"  href="../effective-agents.html">Building Effective Agents</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link"  href="https://catalog.workshops.aws/java-spring-ai-agents">Building agents with Spring AI by AWS</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link"  href="https://catalog.workshops.aws/java-spring-ai-agentcore">Building agents with Spring AI and AgentCore by AWS</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link"  href="https://github.com/microsoft/Spring-AI-for-Beginners">Spring AI for Beginners by Microsoft</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link"  href="../../upgrade-notes.html">Upgrade Notes</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link"  href="../tools-migration.html">Migrating FunctionCallback to ToolCallback API</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link"  href="../chat/anthropic-migration.html">Migrating the Anthropic Module to the Official Java SDK</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+          <div class="toggle-sm">
+            <button id="nav-toggle-2" class="nav-toggle"></button>
+          </div>
+        </nav>
+      </div>
+      <div class="nav-collapse">
+        <button id="nav-collapse-toggle"><span></span></button>        
+      </div>
+    </div>
+    <div class="nav-resize"></div>
+  </aside>
+</div>
+<script>
+!function (sidebar) {
+  if (sidebar) {
+    document.body.classList.add('nav-sm')
+  }
+}(localStorage && localStorage.getItem('sidebar') === 'close')
+</script><main class="article">
+<div class="toolbar" role="navigation">
+  <button id="nav-toggle-1" class="nav-toggle"></button>
+<div class="search">
+  <button class="DocSearch-Button search-button">
+    <svg enable-background="new 0 0 32 32" id="Glyph" version="1.1" viewBox="0 0 32 32" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+      <path d="M27.414,24.586l-5.077-5.077C23.386,17.928,24,16.035,24,14c0-5.514-4.486-10-10-10S4,8.486,4,14  s4.486,10,10,10c2.035,0,3.928-0.614,5.509-1.663l5.077,5.077c0.78,0.781,2.048,0.781,2.828,0  C28.195,26.633,28.195,25.367,27.414,24.586z M7,14c0-3.86,3.14-7,7-7s7,3.14,7,7s-3.14,7-7,7S7,17.86,7,14z" id="XMLID_223_"/>
+    </svg>
+    <span>Search</span>
+    <span class="search-key"></span>
+  </button>
+</div>
+</div>
+  <div class="content">
+<aside class="sidebar">
+  <div class="content">
+    <div
+      class="toc"
+      data-title="MCP Annotations Special Parameters"
+      data-levels="2"
+    >
+      <div class="toc-menu"></div>
+    </div>
+    <div class="sidebar-links">
+        <a href="file:///workspaces/spring-ai/spring-ai-docs/src/main/antora/modules/ROOT/pages/api/mcp/mcp-annotations-special-params.adoc">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="24"
+            viewBox="0 0 24 24"
+            width="24"
+          ><path
+              d="m16 2.012 3 3L16.713 7.3l-3-3zM4 14v3h3l8.299-8.287-3-3zm0 6h16v2H4z"
+            ></path></svg>
+          Edit this Page
+        </a>
+        <a href="https://github.com/spring-projects/spring-ai" title="GitHub">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="512px"
+            id="Layer_1"
+            version="1.1"
+            viewBox="0 0 512 512"
+            width="512px"
+          ><style type="text/css"><![CDATA[
+              .st0{fill-rule:evenodd;clip-rule:evenodd;} ]]></style><g><path
+                class="st0"
+                d="M256,32C132.3,32,32,134.8,32,261.7c0,101.5,64.2,187.5,153.2,217.9c11.2,2.1,15.3-5,15.3-11.1   c0-5.5-0.2-19.9-0.3-39.1c-62.3,13.9-75.5-30.8-75.5-30.8c-10.2-26.5-24.9-33.6-24.9-33.6c-20.3-14.3,1.5-14,1.5-14   c22.5,1.6,34.3,23.7,34.3,23.7c20,35.1,52.4,25,65.2,19.1c2-14.8,7.8-25,14.2-30.7c-49.7-5.8-102-25.5-102-113.5   c0-25.1,8.7-45.6,23-61.6c-2.3-5.8-10-29.2,2.2-60.8c0,0,18.8-6.2,61.6,23.5c17.9-5.1,37-7.6,56.1-7.7c19,0.1,38.2,2.6,56.1,7.7   c42.8-29.7,61.5-23.5,61.5-23.5c12.2,31.6,4.5,55,2.2,60.8c14.3,16.1,23,36.6,23,61.6c0,88.2-52.4,107.6-102.3,113.3   c8,7.1,15.2,21.1,15.2,42.5c0,30.7-0.3,55.5-0.3,63c0,6.1,4,13.3,15.4,11C415.9,449.1,480,363.1,480,261.7   C480,134.8,379.7,32,256,32z"
+              ></path></g></svg>
+          GitHub Project
+        </a>
+    </div>
+  </div>
+</aside>
+<article class="doc">
+<div class="breadcrumbs-container">
+  <nav class="breadcrumbs" aria-label="breadcrumbs">
+    <ul>
+      <li><a href="../../index.html">Spring AI</a></li>
+      <li>Reference</li>
+      <li><a href="mcp-overview.html">Model Context Protocol (MCP)</a></li>
+      <li><a href="mcp-annotations-overview.html">MCP Annotations</a></li>
+      <li><a href="mcp-annotations-special-params.html">Special Parameters</a></li>
+    </ul>
+  </nav>
+</div><h1 id="page-title" class="page">MCP Annotations Special Parameters</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>The MCP Annotations support several special parameter types that provide additional context and functionality to annotated methods.
+These parameters are automatically injected by the framework and are excluded from JSON schema generation.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_special_parameter_types"><a class="anchor" href="#_special_parameter_types"></a>Special Parameter Types</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_metaprovider"><a class="anchor" href="#_metaprovider"></a>MetaProvider</h3>
+<div class="paragraph">
+<p>The <code>MetaProvider</code> interface supplies data for the <code>_meta</code> field in tool, prompt, and resource declarations.</p>
+</div>
+<div class="sect3">
+<h4 id="_overview"><a class="anchor" href="#_overview"></a>Overview</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Implemented as a class referenced in <code>@McpTool(metaProvider = &#8230;&#8203;)</code>, <code>@McpPrompt(metaProvider = &#8230;&#8203;)</code>, or <code>@McpResource(metaProvider = &#8230;&#8203;)</code></p>
+</li>
+<li>
+<p>Allows attaching static or computed metadata to a tool/prompt/resource specification at startup</p>
+</li>
+<li>
+<p>The default <code>DefaultMetaProvider</code> returns an empty map (no <code>_meta</code> appended)</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_custom_metaprovider"><a class="anchor" href="#_custom_metaprovider"></a>Custom MetaProvider</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public class MyToolMetaProvider implements MetaProvider {
+
+    @Override
+    public Map&lt;String, Object&gt; getMeta() {
+        return Map.of(
+            "version", "1.0",
+            "team", "platform",
+            "experimental", false
+        );
+    }
+}
+
+@McpTool(name = "my-tool",
+         description = "Tool with metadata",
+         metaProvider = MyToolMetaProvider.class)
+public String myTool(@McpToolParam(description = "Input") String input) {
+    return "Processed: " + input;
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The same pattern applies to <code>@McpPrompt</code> and <code>@McpResource</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_mcpmeta"><a class="anchor" href="#_mcpmeta"></a>McpMeta</h3>
+<div class="paragraph">
+<p>The <code>McpMeta</code> class provides access to metadata from MCP requests, notifications, and results.</p>
+</div>
+<div class="sect3">
+<h4 id="_overview_2"><a class="anchor" href="#_overview_2"></a>Overview</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Automatically injected when used as a method parameter</p>
+</li>
+<li>
+<p>Excluded from parameter count limits and JSON schema generation</p>
+</li>
+<li>
+<p>Provides convenient access to metadata through the <code>get(String key)</code> method</p>
+</li>
+<li>
+<p>If no metadata is present in the request, an empty <code>McpMeta</code> object is injected</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_usage_in_tools"><a class="anchor" href="#_usage_in_tools"></a>Usage in Tools</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@McpTool(name = "contextual-tool", description = "Tool with metadata access")
+public String processWithContext(
+        @McpToolParam(description = "Input data", required = true) String data,
+        McpMeta meta) {
+
+    // Access metadata from the request
+    String userId = (String) meta.get("userId");
+    String sessionId = (String) meta.get("sessionId");
+    String userRole = (String) meta.get("userRole");
+
+    // Use metadata to customize behavior
+    if ("admin".equals(userRole)) {
+        return processAsAdmin(data, userId);
+    } else {
+        return processAsUser(data, userId);
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_usage_in_resources"><a class="anchor" href="#_usage_in_resources"></a>Usage in Resources</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@McpResource(uri = "secure-data://{id}", name = "Secure Data")
+public ReadResourceResult getSecureData(String id, McpMeta meta) {
+
+    String requestingUser = (String) meta.get("requestingUser");
+    String accessLevel = (String) meta.get("accessLevel");
+
+    // Check access permissions using metadata
+    if (!"admin".equals(accessLevel)) {
+        return ReadResourceResult.builder(List.of(
+            new TextResourceContents("secure-data://" + id,
+                "text/plain", "Access denied")
+        )).build();
+    }
+
+    String data = loadSecureData(id);
+    return ReadResourceResult.builder(List.of(
+        new TextResourceContents("secure-data://" + id,
+            "text/plain", data)
+    )).build();
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_usage_in_prompts"><a class="anchor" href="#_usage_in_prompts"></a>Usage in Prompts</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@McpPrompt(name = "localized-prompt", description = "Localized prompt generation")
+public GetPromptResult localizedPrompt(
+        @McpArg(name = "topic", required = true) String topic,
+        McpMeta meta) {
+
+    String language = (String) meta.get("language");
+    String region = (String) meta.get("region");
+
+    // Generate localized content based on metadata
+    String message = generateLocalizedMessage(topic, language, region);
+
+    return GetPromptResult.builder(List.of(new PromptMessage(Role.ASSISTANT, TextContent.builder(message).build())))
+        .description("Localized Prompt")
+        .build();
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_mcpprogresstoken"><a class="anchor" href="#_mcpprogresstoken"></a>@McpProgressToken</h3>
+<div class="paragraph">
+<p>The <code>@McpProgressToken</code> annotation marks a parameter to receive progress tokens from MCP requests.</p>
+</div>
+<div class="sect3">
+<h4 id="_overview_3"><a class="anchor" href="#_overview_3"></a>Overview</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Parameter type should be <code>String</code></p>
+</li>
+<li>
+<p>Automatically receives the progress token value from the request</p>
+</li>
+<li>
+<p>Excluded from the generated JSON schema</p>
+</li>
+<li>
+<p>If no progress token is present, <code>null</code> is injected</p>
+</li>
+<li>
+<p>Used for tracking long-running operations</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_usage_in_tools_2"><a class="anchor" href="#_usage_in_tools_2"></a>Usage in Tools</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@McpTool(name = "long-operation", description = "Long-running operation with progress")
+public String performLongOperation(
+        @McpProgressToken String progressToken,
+        @McpToolParam(description = "Operation name", required = true) String operation,
+        @McpToolParam(description = "Duration in seconds", required = true) int duration,
+        McpSyncServerExchange exchange) {
+
+    if (progressToken != null) {
+        // Send initial progress
+        exchange.progressNotification(ProgressNotification.builder(progressToken, 0.0)
+            .total(1.0).message("Starting " + operation).build());
+
+        // Simulate work with progress updates
+        for (int i = 1; i &lt;= duration; i++) {
+            Thread.sleep(1000);
+            double progress = (double) i / duration;
+
+            exchange.progressNotification(ProgressNotification.builder(progressToken, progress)
+                .total(1.0).message(String.format("Processing... %d%%", (int)(progress * 100))).build());
+        }
+    }
+
+    return "Operation " + operation + " completed";
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_usage_in_resources_2"><a class="anchor" href="#_usage_in_resources_2"></a>Usage in Resources</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@McpResource(uri = "large-file://{path}", name = "Large File Resource")
+public ReadResourceResult getLargeFile(
+        @McpProgressToken String progressToken,
+        String path,
+        McpSyncServerExchange exchange) {
+
+    File file = new File(path);
+    long fileSize = file.length();
+
+    if (progressToken != null) {
+        // Track file reading progress
+        exchange.progressNotification(ProgressNotification.builder(progressToken, 0.0)
+            .total(fileSize).message("Reading file").build());
+    }
+
+    String content = readFileWithProgress(file, progressToken, exchange);
+
+    if (progressToken != null) {
+        exchange.progressNotification(ProgressNotification.builder(progressToken, fileSize)
+            .total(fileSize).message("File read complete").build());
+    }
+
+    return ReadResourceResult.builder(List.of(
+        new TextResourceContents("large-file://" + path, "text/plain", content)
+    )).build();
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_mcpsyncrequestcontext_mcpasyncrequestcontext"><a class="anchor" href="#_mcpsyncrequestcontext_mcpasyncrequestcontext"></a>McpSyncRequestContext / McpAsyncRequestContext</h3>
+<div class="paragraph">
+<p>Request context objects provide unified access to MCP request information and server-side operations.</p>
+</div>
+<div class="sect3">
+<h4 id="_overview_4"><a class="anchor" href="#_overview_4"></a>Overview</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Provides unified interface for both stateful and stateless operations</p>
+</li>
+<li>
+<p>Automatically injected when used as a parameter</p>
+</li>
+<li>
+<p>Excluded from JSON schema generation</p>
+</li>
+<li>
+<p>Enables advanced features like logging, progress notifications, sampling, elicitation, and roots access</p>
+</li>
+<li>
+<p>Works with both stateful (server exchange) and stateless (transport context) modes</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_context_getters"><a class="anchor" href="#_context_getters"></a>Context Getters</h4>
+<div class="paragraph">
+<p>Both <code>McpSyncRequestContext</code> and <code>McpAsyncRequestContext</code> expose the following read-only context:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 75%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Method</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>request()</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The original MCP request (e.g., <code>CallToolRequest</code>, <code>ReadResourceRequest</code>). Use <code>request().progressToken()</code> to access the progress token.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>exchange()</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The underlying server exchange (<code>McpSyncServerExchange</code> / <code>McpAsyncServerExchange</code>). Available in stateful mode only; <code>null</code> in stateless mode.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>sessionId()</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The current session identifier.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>clientInfo()</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The client implementation info (<code>Implementation</code>).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>clientCapabilities()</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The capabilities declared by the client.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>requestMeta()</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Metadata map from the <code>_meta</code> field of the request. Prefer this over injecting <code>McpMeta</code> when already using a context object.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>transportContext()</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The transport-level context (<code>McpTransportContext</code>).</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_mcpsyncrequestcontext_features"><a class="anchor" href="#_mcpsyncrequestcontext_features"></a>McpSyncRequestContext Features</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public record UserInfo(String name, String email, int age) {}
+
+@McpTool(name = "advanced-tool", description = "Tool with full server capabilities")
+public String advancedTool(
+        McpSyncRequestContext context,
+        @McpToolParam(description = "Input", required = true) String input) {
+
+    // Send logging notification
+    context.info("Processing: " + input);
+
+    // Ping the client
+    context.ping();
+
+    // Send progress updates
+    context.progress(50); // 50% complete
+
+    // Check if elicitation is supported before using it
+    if (context.elicitEnabled()) {
+        // Request additional information from user
+        StructuredElicitResult&lt;UserInfo&gt; elicitResult = context.elicit(
+            e -&gt; e.message("Need additional information"),
+            UserInfo.class
+        );
+
+        if (elicitResult.action() == ElicitResult.Action.ACCEPT) {
+            UserInfo userInfo = elicitResult.structuredContent();
+            // Use the user information
+        }
+    }
+
+    // Check if sampling is supported before using it
+    if (context.sampleEnabled()) {
+        // Request LLM sampling
+        CreateMessageResult samplingResult = context.sample(
+            s -&gt; s.message("Process: " + input)
+                .modelPreferences(pref -&gt; pref.modelHints("gpt-4"))
+        );
+    }
+
+    // Access client root directories (only available in stateful mode)
+    if (context.rootsEnabled()) {
+        ListRootsResult roots = context.roots();
+        roots.roots().forEach(root -&gt; context.info("Client root: " + root.uri()));
+    }
+
+    return "Processed with advanced features";
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_mcpasyncrequestcontext_features"><a class="anchor" href="#_mcpasyncrequestcontext_features"></a>McpAsyncRequestContext Features</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public record UserInfo(String name, String email, int age) {}
+
+@McpTool(name = "async-advanced-tool", description = "Async tool with server capabilities")
+public Mono&lt;String&gt; asyncAdvancedTool(
+        McpAsyncRequestContext context,
+        @McpToolParam(description = "Input", required = true) String input) {
+
+    return context.info("Async processing: " + input)
+        .then(context.progress(25))
+        .then(context.ping())
+        .flatMap(v -&gt; {
+            // Perform elicitation if supported
+            if (context.elicitEnabled()) {
+                return context.elicitation(UserInfo.class)
+                    .map(userInfo -&gt; "Processing for user: " + userInfo.name());
+            }
+            return Mono.just("Processing...");
+        })
+        .flatMap(msg -&gt; {
+            // Perform sampling if supported
+            if (context.sampleEnabled()) {
+                return context.sampling("Process: " + input)
+                    .map(result -&gt; "Completed: " + result);
+            }
+            return Mono.just("Completed: " + msg);
+        });
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_mcptransportcontext"><a class="anchor" href="#_mcptransportcontext"></a>McpTransportContext</h3>
+<div class="paragraph">
+<p>Lightweight context for stateless operations.</p>
+</div>
+<div class="sect3">
+<h4 id="_overview_5"><a class="anchor" href="#_overview_5"></a>Overview</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Provides minimal context without full server exchange</p>
+</li>
+<li>
+<p>Used in stateless implementations</p>
+</li>
+<li>
+<p>Automatically injected when used as a parameter</p>
+</li>
+<li>
+<p>Excluded from JSON schema generation</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_usage_example"><a class="anchor" href="#_usage_example"></a>Usage Example</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@McpTool(name = "stateless-tool", description = "Stateless tool with context")
+public String statelessTool(
+        McpTransportContext context,
+        @McpToolParam(description = "Input", required = true) String input) {
+
+    // Limited context access
+    // Useful for transport-level operations
+
+    return "Processed in stateless mode: " + input;
+}
+
+@McpResource(uri = "stateless://{id}", name = "Stateless Resource")
+public ReadResourceResult statelessResource(
+        McpTransportContext context,
+        String id) {
+
+    // Access transport context if needed
+    String data = loadData(id);
+
+    return ReadResourceResult.builder(List.of(
+        new TextResourceContents("stateless://" + id, "text/plain", data)
+    )).build();
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_calltoolrequest"><a class="anchor" href="#_calltoolrequest"></a>CallToolRequest</h3>
+<div class="paragraph">
+<p>Special parameter for tools that need access to the full request with dynamic schema.</p>
+</div>
+<div class="sect3">
+<h4 id="_overview_6"><a class="anchor" href="#_overview_6"></a>Overview</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Provides access to the complete tool request</p>
+</li>
+<li>
+<p>Enables dynamic schema handling at runtime</p>
+</li>
+<li>
+<p>Automatically injected and excluded from schema generation</p>
+</li>
+<li>
+<p>Useful for flexible tools that adapt to different input schemas</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_usage_examples"><a class="anchor" href="#_usage_examples"></a>Usage Examples</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@McpTool(name = "dynamic-tool", description = "Tool with dynamic schema support")
+public CallToolResult processDynamicSchema(CallToolRequest request) {
+    Map&lt;String, Object&gt; args = request.arguments();
+
+    // Process based on whatever schema was provided at runtime
+    StringBuilder result = new StringBuilder("Processed:\n");
+
+    for (Map.Entry&lt;String, Object&gt; entry : args.entrySet()) {
+        result.append("  ").append(entry.getKey())
+              .append(": ").append(entry.getValue()).append("\n");
+    }
+
+    return CallToolResult.builder()
+        .addTextContent(result.toString())
+        .build();
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_mixed_parameters"><a class="anchor" href="#_mixed_parameters"></a>Mixed Parameters</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@McpTool(name = "hybrid-tool", description = "Tool with typed and dynamic parameters")
+public String processHybrid(
+        @McpToolParam(description = "Operation", required = true) String operation,
+        @McpToolParam(description = "Priority", required = false) Integer priority,
+        CallToolRequest request) {
+
+    // Use typed parameters for known fields
+    String result = "Operation: " + operation;
+    if (priority != null) {
+        result += " (Priority: " + priority + ")";
+    }
+
+    // Access additional dynamic arguments
+    Map&lt;String, Object&gt; allArgs = request.arguments();
+
+    // Remove known parameters to get only additional ones
+    Map&lt;String, Object&gt; additionalArgs = new HashMap&lt;&gt;(allArgs);
+    additionalArgs.remove("operation");
+    additionalArgs.remove("priority");
+
+    if (!additionalArgs.isEmpty()) {
+        result += " with " + additionalArgs.size() + " additional parameters";
+    }
+
+    return result;
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_with_progress_token"><a class="anchor" href="#_with_progress_token"></a>With Progress Token</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@McpTool(name = "flexible-with-progress", description = "Flexible tool with progress")
+public CallToolResult flexibleWithProgress(
+        @McpProgressToken String progressToken,
+        CallToolRequest request,
+        McpSyncServerExchange exchange) {
+
+    Map&lt;String, Object&gt; args = request.arguments();
+
+    if (progressToken != null) {
+        exchange.progressNotification(ProgressNotification.builder(progressToken, 0.0)
+            .total(1.0).message("Processing dynamic request").build());
+    }
+
+    // Process dynamic arguments
+    String result = processDynamicArgs(args);
+
+    if (progressToken != null) {
+        exchange.progressNotification(ProgressNotification.builder(progressToken, 1.0)
+            .total(1.0).message("Complete").build());
+    }
+
+    return CallToolResult.builder()
+        .addTextContent(result)
+        .build();
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_parameter_injection_rules"><a class="anchor" href="#_parameter_injection_rules"></a>Parameter Injection Rules</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_automatic_injection"><a class="anchor" href="#_automatic_injection"></a>Automatic Injection</h3>
+<div class="paragraph">
+<p>The following parameters are automatically injected by the framework:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>McpMeta</code> - Metadata from the <code>_meta</code> field of the request</p>
+</li>
+<li>
+<p><code>@McpProgressToken String</code> - Progress token if available</p>
+</li>
+<li>
+<p><code>McpSyncRequestContext</code> / <code>McpAsyncRequestContext</code> - Unified request context (recommended)</p>
+</li>
+<li>
+<p><code>McpSyncServerExchange</code> / <code>McpAsyncServerExchange</code> - Low-level server exchange context (stateful only)</p>
+</li>
+<li>
+<p><code>McpTransportContext</code> - Transport context for stateless operations</p>
+</li>
+<li>
+<p><code>CallToolRequest</code> - Full tool request for dynamic schema (tools only)</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_schema_generation"><a class="anchor" href="#_schema_generation"></a>Schema Generation</h3>
+<div class="paragraph">
+<p>Special parameters are excluded from JSON schema generation:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>They don&#8217;t appear in the tool&#8217;s input schema</p>
+</li>
+<li>
+<p>They don&#8217;t count towards parameter limits</p>
+</li>
+<li>
+<p>They&#8217;re not visible to MCP clients</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_null_handling"><a class="anchor" href="#_null_handling"></a>Null Handling</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><code>McpMeta</code> - Never null, empty object if no metadata</p>
+</li>
+<li>
+<p><code>@McpProgressToken</code> - Can be null if no token provided</p>
+</li>
+<li>
+<p>Server exchanges - Never null when properly configured</p>
+</li>
+<li>
+<p><code>CallToolRequest</code> - Never null for tool methods</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_best_practices"><a class="anchor" href="#_best_practices"></a>Best Practices</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_use_mcpmeta_for_context"><a class="anchor" href="#_use_mcpmeta_for_context"></a>Use McpMeta for Context</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@McpTool(name = "context-aware", description = "Context-aware tool")
+public String contextAware(
+        @McpToolParam(description = "Data", required = true) String data,
+        McpMeta meta) {
+
+    // Always check for null values in metadata
+    String userId = (String) meta.get("userId");
+    if (userId == null) {
+        userId = "anonymous";
+    }
+
+    return processForUser(data, userId);
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_progress_token_null_checks"><a class="anchor" href="#_progress_token_null_checks"></a>Progress Token Null Checks</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@McpTool(name = "safe-progress", description = "Safe progress handling")
+public String safeProgress(
+        @McpProgressToken String progressToken,
+        @McpToolParam(description = "Task", required = true) String task,
+        McpSyncServerExchange exchange) {
+
+    // Always check if progress token is available
+    if (progressToken != null) {
+        exchange.progressNotification(ProgressNotification.builder(progressToken, 0.0)
+            .total(1.0).message("Starting").build());
+    }
+
+    // Perform work...
+
+    if (progressToken != null) {
+        exchange.progressNotification(ProgressNotification.builder(progressToken, 1.0)
+            .total(1.0).message("Complete").build());
+    }
+
+    return "Task completed";
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_choose_the_right_context"><a class="anchor" href="#_choose_the_right_context"></a>Choose the Right Context</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Use <code>McpSyncRequestContext</code> / <code>McpAsyncRequestContext</code> for unified access to request context, supporting both stateful and stateless operations with convenient helper methods</p>
+</li>
+<li>
+<p>Use <code>McpTransportContext</code> for simple stateless operations when you only need transport-level context</p>
+</li>
+<li>
+<p>Omit context parameters entirely for the simplest cases</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_capability_checking"><a class="anchor" href="#_capability_checking"></a>Capability Checking</h3>
+<div class="paragraph">
+<p>Always check capability support before using client features:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@McpTool(name = "capability-aware", description = "Tool that checks capabilities")
+public String capabilityAware(
+        McpSyncRequestContext context,
+        @McpToolParam(description = "Data", required = true) String data) {
+
+    // Check if elicitation is supported before using it
+    if (context.elicitEnabled()) {
+        // Safe to use elicitation
+        var result = context.elicit(UserInfo.class);
+        // Process result...
+    }
+
+    // Check if sampling is supported before using it
+    if (context.sampleEnabled()) {
+        // Safe to use sampling
+        var samplingResult = context.sample("Process: " + data);
+        // Process result...
+    }
+
+    // Note: Stateless servers do not support bidirectional operations
+    // (roots, elicitation, sampling) and will return false for these checks
+
+    return "Processed with capability awareness";
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_additional_resources"><a class="anchor" href="#_additional_resources"></a>Additional Resources</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="mcp-annotations-overview.html" class="xref page">MCP Annotations Overview</a></p>
+</li>
+<li>
+<p><a href="mcp-annotations-server.html" class="xref page">Server Annotations</a></p>
+</li>
+<li>
+<p><a href="mcp-annotations-client.html" class="xref page">Client Annotations</a></p>
+</li>
+<li>
+<p><a href="mcp-annotations-examples.html" class="xref page">Examples</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="mcp-annotations-server.html">Server Annotations</a></span>
+  <span class="next"><a href="mcp-annotations-examples.html">MCP Annotations Examples</a></span>
+</nav>
+</article>  </div>
+</main>
+<div class="modal micromodal-slide" id="modal-versions" aria-hidden="true">
+    <div class="modal__overlay" tabindex="-1" data-micromodal-close>
+        <div class="modal__container" role="dialog" aria-modal="true">
+            <main class="modal__content" id="modal-versions-content">
+              <button data-micromodal-close class="modal-versions-close">
+                <svg width="28px" height="28px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><defs><style>.cls-1h{fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:2px;}</style></defs><title/><g id="cross"><line class="cls-1h" x1="7" x2="25" y1="7" y2="25"/><line class="cls-1h" x1="7" x2="25" y1="25" y2="7"/></g></svg>
+              </button>
+              <div class="colset">
+                <div class="col-left">
+
+                  <ul class="nav-versions">
+                      <li class="component">
+                        <div>
+                          <a class="title" href="../../index.html">Spring AI</a>
+                        </div>                        <div class="version-item is-active">
+                          <div>
+                            <button class="version-toggle" type="button">
+                              <span></span>
+                              Stable
+                            </button>
+                          </div>
+                          <ul class="versions">
+  <li class="version">
+    <a href="../../index.html">
+      2.0.0
+    </a>
+  </li>
+</ul>                        </div>
+                        
+                      </li>
+                  </ul>
+                </div>
+                <div class="col-right">
+                  <ul class="projects">
+  <li>
+    Related Spring Documentation
+    <ul class="projects-list">
+    </ul>
+  </li
+  <li><a href="../../spring-projects.html">All Docs...</a></li>
+</ul>
+                </div>
+              </div>
+            </main>
+        </div>
+    </div>
+</div>
+
+</div>
+<footer class="footer flex">
+    <div id="spring-links flex">
+        <img id="springlogo" src="../../_/img/spring-logo.svg" alt="Spring">
+        <p class="smallest antialiased">Copyright © 2005 - <script>var d = new Date();
+        document.write(d.getFullYear());</script> Broadcom. All Rights Reserved. The term "Broadcom" refers to Broadcom Inc. and/or its subsidiaries.<br /><a href="https://www.vmware.com/help/legal.html">Terms of Use</a> • <a href="https://www.vmware.com/help/privacy.html" rel="noopener noreferrer">Privacy</a> • <a href="https://spring.io/trademarks">Trademark Guidelines</a> <span id="thank-you-mobile">• <a href="https://spring.io/thank-you">Thank you</a></span> • <a href="https://www.vmware.com/help/privacy/california-privacy-rights.html">Your California Privacy Rights</a> • <a class="ot-sdk-show-settings">Cookie Settings</a> <span id="teconsent"></span></p>
+        <p class="smallest antialiased has-gray-text">Apache®, Apache Tomcat®, Apache Kafka®, Apache Cassandra&trade;, and Apache Geode&trade; are trademarks or registered trademarks of the Apache Software Foundation in the United States and/or other countries. Java&trade;, Java&trade; SE, Java&trade; EE, and OpenJDK&trade; are trademarks of Oracle and/or its affiliates. Kubernetes® is a registered trademark of the Linux Foundation in the United States and other countries. Linux® is the registered trademark of Linus Torvalds in the United States and other countries. Windows® and Microsoft® Azure are registered trademarks of Microsoft Corporation. “AWS” and “Amazon Web Services” are trademarks or registered trademarks of Amazon.com Inc. or its affiliates. All other trademarks and copyrights are property of their respective owners and are only mentioned for informative purposes. Other names may be trademarks of their respective owners.</p>
+    </div>
+    <div id="social-icons" class="flex jc-between">
+        <a href="https://www.youtube.com/user/SpringSourceDev" title="Youtube"><svg id="youtube-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"><circle class="cls-1" cx="20" cy="20" r="20"/><path class="cls-2" d="M30.91,14.53a2.89,2.89,0,0,0-2-2C27.12,12,20,12,20,12s-7.12,0-8.9.47a2.9,2.9,0,0,0-2,2A30.56,30.56,0,0,0,8.63,20a30.44,30.44,0,0,0,.46,5.47,2.89,2.89,0,0,0,2,2C12.9,28,20,28,20,28s7.12,0,8.9-.47a2.87,2.87,0,0,0,2-2A30.56,30.56,0,0,0,31.37,20,28.88,28.88,0,0,0,30.91,14.53ZM17.73,23.41V16.59L23.65,20Z"/></svg></a>
+        <a href="https://github.com/spring-projects" title="GitHub"><svg id="github-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 75.93 75.93"><path class="cls-1" d="M38,0a38,38,0,1,0,38,38A38,38,0,0,0,38,0Z"/></g><path class="cls-2" d="M38,15.59A22.95,22.95,0,0,0,30.71,60.3c1.15.21,1.57-.5,1.57-1.11s0-2,0-3.9c-6.38,1.39-7.73-3.07-7.73-3.07A6.09,6.09,0,0,0,22,48.86c-2.09-1.42.15-1.39.15-1.39a4.81,4.81,0,0,1,3.52,2.36c2,3.5,5.37,2.49,6.67,1.91a4.87,4.87,0,0,1,1.46-3.07c-5.09-.58-10.45-2.55-10.45-11.34a8.84,8.84,0,0,1,2.36-6.15,8.29,8.29,0,0,1,.23-6.07s1.92-.62,6.3,2.35a21.82,21.82,0,0,1,11.49,0c4.38-3,6.3-2.35,6.3-2.35a8.29,8.29,0,0,1,.23,6.07,8.84,8.84,0,0,1,2.36,6.15c0,8.81-5.37,10.75-10.48,11.32a5.46,5.46,0,0,1,1.56,4.25c0,3.07,0,5.54,0,6.29s.42,1.33,1.58,1.1A22.94,22.94,0,0,0,38,15.59Z"/></svg></a>
+        <a href="https://twitter.com/springcentral" title="Twitter"><svg id="twitter-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 75.93 75.93"><circle class="cls-1" cx="37.97" cy="37.97" r="37.97"/><path id="Twitter-2" data-name="Twitter" class="cls-2" d="M55.2,22.73a15.43,15.43,0,0,1-4.88,1.91,7.56,7.56,0,0,0-5.61-2.49A7.78,7.78,0,0,0,37,30a7.56,7.56,0,0,0,.2,1.79,21.63,21.63,0,0,1-15.84-8.23,8,8,0,0,0,2.37,10.52,7.66,7.66,0,0,1-3.48-1v.09A7.84,7.84,0,0,0,26.45,41a7.54,7.54,0,0,1-2,.28A7.64,7.64,0,0,1,23,41.09a7.71,7.71,0,0,0,7.18,5.47,15.21,15.21,0,0,1-9.55,3.37,15.78,15.78,0,0,1-1.83-.11,21.41,21.41,0,0,0,11.78,3.54c14.13,0,21.86-12,21.86-22.42,0-.34,0-.68,0-1a15.67,15.67,0,0,0,3.83-4.08,14.9,14.9,0,0,1-4.41,1.24A7.8,7.8,0,0,0,55.2,22.73Z"/></svg></a>
+    </div>
+</footer>
+<script src="../../_/js/vendor/import.js"></script>
+<script src="../../_/js/site.js"></script>
+<script async src="../../_/js/vendor/highlight.js"></script>
+<script async src="../../_/js/vendor/asciidoctor-tabs.js" data-sync-storage-key="docs:preferred-tab"></script>
+
+<div class="modal micromodal-slide" id="modal-1" aria-hidden="true">
+    <div class="modal__overlay" tabindex="-1" data-micromodal-close>
+        <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="modal-1-title">
+            <main class="modal__content" id="modal-1-content">
+                <div id="searchbox"></div>
+                <div id="counter"></div>
+                <div class="search-link-box">
+                    <a class="search-link" href="../../search.html">Search in all Spring Docs</a>
+                </div>
+                <div class="search-by">
+                    <a target="_blank" rel="noopener noreferrer" href="https://www.algolia.com/" aria-label="Search by Algolia">
+                        <img class="light" width="140" src="../../_/img/algolia-light.svg" />
+                        <img class="dark" width="140" src="../../_/img/algolia-dark.svg" />
+                    </a>
+                </div>
+                <div id="hits"></div>
+            </main>
+        </div>
+    </div>
+</div>
+
+<script src="https://unpkg.com/hotkeys-js/dist/hotkeys.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/algoliasearch@4.17.0/dist/algoliasearch-lite.umd.js" integrity="sha256-Lf9DrpGmcRip6OQzbcL6lnvNmoZNSKpyQX5pMlwatWE=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@4.54.1/dist/instantsearch.production.min.js" integrity="sha256-xYsZPDeNjYNTBWLvqD2Lxe98hOxcDgOHyMPfz4tVAbk=" crossorigin="anonymous"></script>
+<script async id="search-script" src="../../_/js/vendor/search.js" data-app-id="WB1FQYI187" data-api-key="c2e84f15fa630d534f1c62b1c413bb77" data-index-name="springdocs" data-stylesheet="../../_/css/vendor/search.css" data-page-version="2.0.0" data-page-component="ai"></script>
+  </body>
+</html>

@@ -1,0 +1,598 @@
+{
+  "$id": "https://schemas.antora.org/site-manifest/1-0-0/draft-01",
+  "generated": "2026-06-13T02:05:52.355Z",
+  "url": "https://docs.spring.io/spring-ai/reference",
+  "components": {
+    "ai": {
+      "title": "Spring AI",
+      "latest": "2.0.0",
+      "versions": {
+        "2.0.0": {
+          "url": "/index.html",
+          "pages": [
+            {
+              "path": "index.adoc",
+              "url": "/index.html",
+              "title": "Introduction"
+            },
+            {
+              "path": "api/index.adoc",
+              "url": "/api/index.html",
+              "title": "Spring AI API"
+            },
+            {
+              "path": "api/advisors-recursive.adoc",
+              "url": "/api/advisors-recursive.html",
+              "title": "Recursive Advisors"
+            },
+            {
+              "path": "api/advisors.adoc",
+              "url": "/api/advisors.html",
+              "title": "Advisors API"
+            },
+            {
+              "path": "api/aimetadata.adoc",
+              "url": "/api/aimetadata.html",
+              "title": "AI metadata"
+            },
+            {
+              "path": "api/audio.adoc",
+              "url": "/api/audio.html",
+              "title": "Audio Models"
+            },
+            {
+              "path": "api/audio/speech.adoc",
+              "url": "/api/audio/speech.html",
+              "title": "Text-To-Speech (TTS) API"
+            },
+            {
+              "path": "api/audio/speech/elevenlabs-speech.adoc",
+              "url": "/api/audio/speech/elevenlabs-speech.html",
+              "title": "ElevenLabs Text-to-Speech (TTS)"
+            },
+            {
+              "path": "api/audio/speech/openai-speech.adoc",
+              "url": "/api/audio/speech/openai-speech.html",
+              "title": "OpenAI Text-to-Speech (TTS)"
+            },
+            {
+              "path": "api/audio/transcriptions.adoc",
+              "url": "/api/audio/transcriptions.html",
+              "title": "Transcription API"
+            },
+            {
+              "path": "api/audio/transcriptions/azure-openai-transcriptions.adoc",
+              "url": "/api/audio/transcriptions/azure-openai-transcriptions.html",
+              "title": "Azure OpenAI Transcriptions"
+            },
+            {
+              "path": "api/audio/transcriptions/openai-transcriptions.adoc",
+              "url": "/api/audio/transcriptions/openai-transcriptions.html"
+            },
+            {
+              "path": "api/bedrock-chat.adoc",
+              "url": "/api/bedrock-chat.html",
+              "title": "Amazon Bedrock"
+            },
+            {
+              "path": "api/bedrock.adoc",
+              "url": "/api/bedrock.html",
+              "title": "Amazon Bedrock"
+            },
+            {
+              "path": "api/chat-memory.adoc",
+              "url": "/api/chat-memory.html",
+              "title": "Chat Memory"
+            },
+            {
+              "path": "api/chat/anthropic-chat.adoc",
+              "url": "/api/chat/anthropic-chat.html",
+              "title": "Anthropic Chat"
+            },
+            {
+              "path": "api/chat/anthropic-migration.adoc",
+              "url": "/api/chat/anthropic-migration.html",
+              "title": "Migrating the Anthropic Module to the Official Java SDK"
+            },
+            {
+              "path": "api/chat/azure-openai-chat.adoc",
+              "url": "/api/chat/azure-openai-chat.html",
+              "title": "Azure OpenAI Chat"
+            },
+            {
+              "path": "api/chat/bedrock-converse.adoc",
+              "url": "/api/chat/bedrock-converse.html",
+              "title": "Bedrock Converse API"
+            },
+            {
+              "path": "api/chat/comparison.adoc",
+              "url": "/api/chat/comparison.html",
+              "title": "Chat Models Comparison"
+            },
+            {
+              "path": "api/chat/deepseek-chat.adoc",
+              "url": "/api/chat/deepseek-chat.html",
+              "title": "DeepSeek Chat"
+            },
+            {
+              "path": "api/chat/dmr-chat.adoc",
+              "url": "/api/chat/dmr-chat.html",
+              "title": "Docker Model Runner Chat"
+            },
+            {
+              "path": "api/chat/google-genai-chat.adoc",
+              "url": "/api/chat/google-genai-chat.html",
+              "title": "Google GenAI Chat"
+            },
+            {
+              "path": "api/chat/groq-chat.adoc",
+              "url": "/api/chat/groq-chat.html",
+              "title": "Groq Chat"
+            },
+            {
+              "path": "api/chat/minimax-chat.adoc",
+              "url": "/api/chat/minimax-chat.html",
+              "title": "MiniMax Chat"
+            },
+            {
+              "path": "api/chat/mistralai-chat.adoc",
+              "url": "/api/chat/mistralai-chat.html",
+              "title": "Mistral AI Chat"
+            },
+            {
+              "path": "api/chat/nvidia-chat.adoc",
+              "url": "/api/chat/nvidia-chat.html",
+              "title": "NVIDIA Chat"
+            },
+            {
+              "path": "api/chat/oci-genai-chat.adoc",
+              "url": "/api/chat/oci-genai-chat.html",
+              "title": "OCI GenAI Chat"
+            },
+            {
+              "path": "api/chat/ollama-chat.adoc",
+              "url": "/api/chat/ollama-chat.html",
+              "title": "Ollama Chat"
+            },
+            {
+              "path": "api/chat/openai-chat.adoc",
+              "url": "/api/chat/openai-chat.html",
+              "title": "OpenAI Chat"
+            },
+            {
+              "path": "api/chat/perplexity-chat.adoc",
+              "url": "/api/chat/perplexity-chat.html",
+              "title": "Perplexity Chat"
+            },
+            {
+              "path": "api/chat/prompt-engineering-patterns.adoc",
+              "url": "/api/chat/prompt-engineering-patterns.html",
+              "title": "Prompt Engineering Patterns"
+            },
+            {
+              "path": "api/chatclient.adoc",
+              "url": "/api/chatclient.html",
+              "title": "Chat Client API"
+            },
+            {
+              "path": "api/chatmodel.adoc",
+              "url": "/api/chatmodel.html",
+              "title": "Chat Model API"
+            },
+            {
+              "path": "api/docker-compose.adoc",
+              "url": "/api/docker-compose.html",
+              "title": "Docker Compose"
+            },
+            {
+              "path": "api/effective-agents.adoc",
+              "url": "/api/effective-agents.html",
+              "title": "Building Effective Agents"
+            },
+            {
+              "path": "api/embeddings.adoc",
+              "url": "/api/embeddings.html",
+              "title": "Embeddings Model API"
+            },
+            {
+              "path": "api/embeddings/azure-openai-embeddings.adoc",
+              "url": "/api/embeddings/azure-openai-embeddings.html",
+              "title": "Azure OpenAI Embeddings"
+            },
+            {
+              "path": "api/embeddings/bedrock-cohere-embedding.adoc",
+              "url": "/api/embeddings/bedrock-cohere-embedding.html",
+              "title": "Cohere Embeddings"
+            },
+            {
+              "path": "api/embeddings/bedrock-titan-embedding.adoc",
+              "url": "/api/embeddings/bedrock-titan-embedding.html",
+              "title": "Titan Embeddings"
+            },
+            {
+              "path": "api/embeddings/google-genai-embeddings-text.adoc",
+              "url": "/api/embeddings/google-genai-embeddings-text.html",
+              "title": "Google GenAI Text Embeddings"
+            },
+            {
+              "path": "api/embeddings/mistralai-embeddings.adoc",
+              "url": "/api/embeddings/mistralai-embeddings.html",
+              "title": "Mistral AI Embeddings"
+            },
+            {
+              "path": "api/embeddings/oci-genai-embeddings.adoc",
+              "url": "/api/embeddings/oci-genai-embeddings.html",
+              "title": "OCI GenAI Embeddings"
+            },
+            {
+              "path": "api/embeddings/ollama-embeddings.adoc",
+              "url": "/api/embeddings/ollama-embeddings.html",
+              "title": "Ollama Embeddings"
+            },
+            {
+              "path": "api/embeddings/onnx.adoc",
+              "url": "/api/embeddings/onnx.html",
+              "title": "Transformers (ONNX) Embeddings"
+            },
+            {
+              "path": "api/embeddings/openai-embeddings.adoc",
+              "url": "/api/embeddings/openai-embeddings.html",
+              "title": "OpenAI Embeddings"
+            },
+            {
+              "path": "api/embeddings/postgresml-embeddings.adoc",
+              "url": "/api/embeddings/postgresml-embeddings.html",
+              "title": "PostgresML Embeddings"
+            },
+            {
+              "path": "api/embeddings/vertexai-embeddings-multimodal.adoc",
+              "url": "/api/embeddings/vertexai-embeddings-multimodal.html",
+              "title": "Google VertexAI Multimodal Embeddings"
+            },
+            {
+              "path": "api/embeddings/vertexai-embeddings-text.adoc",
+              "url": "/api/embeddings/vertexai-embeddings-text.html",
+              "title": "Google VertexAI Text Embeddings"
+            },
+            {
+              "path": "api/etl-pipeline.adoc",
+              "url": "/api/etl-pipeline.html",
+              "title": "ETL Pipeline"
+            },
+            {
+              "path": "api/generic-model.adoc",
+              "url": "/api/generic-model.html",
+              "title": "Generic Model API"
+            },
+            {
+              "path": "api/image/azure-openai-image.adoc",
+              "url": "/api/image/azure-openai-image.html",
+              "title": "Azure OpenAI Image Generation"
+            },
+            {
+              "path": "api/image/openai-image.adoc",
+              "url": "/api/image/openai-image.html",
+              "title": "OpenAI Image Generation"
+            },
+            {
+              "path": "api/image/stabilityai-image.adoc",
+              "url": "/api/image/stabilityai-image.html",
+              "title": "Stability AI Image Generation"
+            },
+            {
+              "path": "api/imageclient.adoc",
+              "url": "/api/imageclient.html",
+              "title": "Image Model API"
+            },
+            {
+              "path": "api/mcp/mcp-annotations-client.adoc",
+              "url": "/api/mcp/mcp-annotations-client.html",
+              "title": "MCP Client Annotations"
+            },
+            {
+              "path": "api/mcp/mcp-annotations-examples.adoc",
+              "url": "/api/mcp/mcp-annotations-examples.html",
+              "title": "MCP Annotations Examples"
+            },
+            {
+              "path": "api/mcp/mcp-annotations-overview.adoc",
+              "url": "/api/mcp/mcp-annotations-overview.html",
+              "title": "MCP Annotations"
+            },
+            {
+              "path": "api/mcp/mcp-annotations-server.adoc",
+              "url": "/api/mcp/mcp-annotations-server.html",
+              "title": "MCP Server Annotations"
+            },
+            {
+              "path": "api/mcp/mcp-annotations-special-params.adoc",
+              "url": "/api/mcp/mcp-annotations-special-params.html",
+              "title": "MCP Annotations Special Parameters"
+            },
+            {
+              "path": "api/mcp/mcp-client-boot-starter-docs.adoc",
+              "url": "/api/mcp/mcp-client-boot-starter-docs.html",
+              "title": "MCP Client Boot Starter"
+            },
+            {
+              "path": "api/mcp/mcp-helpers.adoc",
+              "url": "/api/mcp/mcp-helpers.html",
+              "title": "MCP Utilities"
+            },
+            {
+              "path": "api/mcp/mcp-overview.adoc",
+              "url": "/api/mcp/mcp-overview.html",
+              "title": "Model Context Protocol (MCP)"
+            },
+            {
+              "path": "api/mcp/mcp-security.adoc",
+              "url": "/api/mcp/mcp-security.html",
+              "title": "MCP Security"
+            },
+            {
+              "path": "api/mcp/mcp-server-boot-starter-docs.adoc",
+              "url": "/api/mcp/mcp-server-boot-starter-docs.html",
+              "title": "MCP Server Boot Starter"
+            },
+            {
+              "path": "api/mcp/mcp-stateless-server-boot-starter-docs.adoc",
+              "url": "/api/mcp/mcp-stateless-server-boot-starter-docs.html"
+            },
+            {
+              "path": "api/mcp/mcp-stdio-sse-server-boot-starter-docs.adoc",
+              "url": "/api/mcp/mcp-stdio-sse-server-boot-starter-docs.html"
+            },
+            {
+              "path": "api/mcp/mcp-streamable-http-server-boot-starter-docs.adoc",
+              "url": "/api/mcp/mcp-streamable-http-server-boot-starter-docs.html"
+            },
+            {
+              "path": "api/moderation.adoc",
+              "url": "/api/moderation.html",
+              "title": "Moderation Models"
+            },
+            {
+              "path": "api/moderation/mistral-ai-moderation.adoc",
+              "url": "/api/moderation/mistral-ai-moderation.html",
+              "title": "Moderation"
+            },
+            {
+              "path": "api/moderation/openai-moderation.adoc",
+              "url": "/api/moderation/openai-moderation.html",
+              "title": "Moderation"
+            },
+            {
+              "path": "api/multimodality.adoc",
+              "url": "/api/multimodality.html",
+              "title": "Multimodality API"
+            },
+            {
+              "path": "api/prompt.adoc",
+              "url": "/api/prompt.html",
+              "title": "Prompts"
+            },
+            {
+              "path": "api/retrieval-augmented-generation.adoc",
+              "url": "/api/retrieval-augmented-generation.html",
+              "title": "Retrieval Augmented Generation"
+            },
+            {
+              "path": "api/speech.adoc",
+              "url": "/api/speech.html",
+              "title": "Speech Model API"
+            },
+            {
+              "path": "api/structured-output-converter.adoc",
+              "url": "/api/structured-output-converter.html",
+              "title": "Structured Output Converter"
+            },
+            {
+              "path": "api/testcontainers.adoc",
+              "url": "/api/testcontainers.html",
+              "title": "Testcontainers"
+            },
+            {
+              "path": "api/testing.adoc",
+              "url": "/api/testing.html",
+              "title": "Evaluation Testing"
+            },
+            {
+              "path": "api/tools-migration.adoc",
+              "url": "/api/tools-migration.html",
+              "title": "Migrating from FunctionCallback to ToolCallback API"
+            },
+            {
+              "path": "api/tools.adoc",
+              "url": "/api/tools.html",
+              "title": "Tool Calling"
+            },
+            {
+              "path": "api/transcriptions.adoc",
+              "url": "/api/transcriptions.html",
+              "title": "Transcription Model API"
+            },
+            {
+              "path": "api/usage-handling.adoc",
+              "url": "/api/usage-handling.html",
+              "title": "Using Chat/Embedding Response Usage"
+            },
+            {
+              "path": "api/vectordbs.adoc",
+              "url": "/api/vectordbs.html",
+              "title": "Vector Databases"
+            },
+            {
+              "path": "api/vectordbs/apache-cassandra.adoc",
+              "url": "/api/vectordbs/apache-cassandra.html",
+              "title": "Apache Cassandra Vector Store"
+            },
+            {
+              "path": "api/vectordbs/azure-cosmos-db.adoc",
+              "url": "/api/vectordbs/azure-cosmos-db.html",
+              "title": "Azure Cosmos DB"
+            },
+            {
+              "path": "api/vectordbs/azure.adoc",
+              "url": "/api/vectordbs/azure.html",
+              "title": "Azure AI Service"
+            },
+            {
+              "path": "api/vectordbs/bedrock-knowledge-base.adoc",
+              "url": "/api/vectordbs/bedrock-knowledge-base.html",
+              "title": "Amazon Bedrock Knowledge Base"
+            },
+            {
+              "path": "api/vectordbs/chroma.adoc",
+              "url": "/api/vectordbs/chroma.html",
+              "title": "Chroma"
+            },
+            {
+              "path": "api/vectordbs/coherence.adoc",
+              "url": "/api/vectordbs/coherence.html"
+            },
+            {
+              "path": "api/vectordbs/couchbase.adoc",
+              "url": "/api/vectordbs/couchbase.html",
+              "title": "Couchbase"
+            },
+            {
+              "path": "api/vectordbs/elasticsearch.adoc",
+              "url": "/api/vectordbs/elasticsearch.html",
+              "title": "Elasticsearch"
+            },
+            {
+              "path": "api/vectordbs/gemfire.adoc",
+              "url": "/api/vectordbs/gemfire.html",
+              "title": "GemFire Vector Store"
+            },
+            {
+              "path": "api/vectordbs/mariadb.adoc",
+              "url": "/api/vectordbs/mariadb.html",
+              "title": "MariaDB Vector Store"
+            },
+            {
+              "path": "api/vectordbs/milvus.adoc",
+              "url": "/api/vectordbs/milvus.html",
+              "title": "Milvus"
+            },
+            {
+              "path": "api/vectordbs/mongodb.adoc",
+              "url": "/api/vectordbs/mongodb.html",
+              "title": "MongoDB Atlas"
+            },
+            {
+              "path": "api/vectordbs/neo4j.adoc",
+              "url": "/api/vectordbs/neo4j.html",
+              "title": "Neo4j"
+            },
+            {
+              "path": "api/vectordbs/opensearch.adoc",
+              "url": "/api/vectordbs/opensearch.html",
+              "title": "OpenSearch"
+            },
+            {
+              "path": "api/vectordbs/oracle.adoc",
+              "url": "/api/vectordbs/oracle.html",
+              "title": "Oracle Database 23ai - AI Vector Search"
+            },
+            {
+              "path": "api/vectordbs/pgvector.adoc",
+              "url": "/api/vectordbs/pgvector.html",
+              "title": "PGvector"
+            },
+            {
+              "path": "api/vectordbs/pinecone.adoc",
+              "url": "/api/vectordbs/pinecone.html",
+              "title": "Pinecone"
+            },
+            {
+              "path": "api/vectordbs/qdrant.adoc",
+              "url": "/api/vectordbs/qdrant.html",
+              "title": "Qdrant"
+            },
+            {
+              "path": "api/vectordbs/redis.adoc",
+              "url": "/api/vectordbs/redis.html",
+              "title": "Redis"
+            },
+            {
+              "path": "api/vectordbs/s3-vector-store.adoc",
+              "url": "/api/vectordbs/s3-vector-store.html",
+              "title": "S3 Vector Store"
+            },
+            {
+              "path": "api/vectordbs/typesense.adoc",
+              "url": "/api/vectordbs/typesense.html",
+              "title": "Typesense"
+            },
+            {
+              "path": "api/vectordbs/understand-vectordbs.adoc",
+              "url": "/api/vectordbs/understand-vectordbs.html",
+              "title": "Understanding Vectors"
+            },
+            {
+              "path": "api/vectordbs/weaviate.adoc",
+              "url": "/api/vectordbs/weaviate.html",
+              "title": "Weaviate"
+            },
+            {
+              "path": "concepts.adoc",
+              "url": "/concepts.html",
+              "title": "AI Concepts"
+            },
+            {
+              "path": "contribution-guidelines.adoc",
+              "url": "/contribution-guidelines.html",
+              "title": "Contribution Guidelines"
+            },
+            {
+              "path": "getting-started.adoc",
+              "url": "/getting-started.html",
+              "title": "Getting Started"
+            },
+            {
+              "path": "glossary.adoc",
+              "url": "/glossary.html",
+              "title": "Glossary"
+            },
+            {
+              "path": "guides/dynamic-tool-search.adoc",
+              "url": "/guides/dynamic-tool-search.html",
+              "title": "Dynamic Tool Discovery with Tool Search Tool"
+            },
+            {
+              "path": "guides/getting-started-mcp.adoc",
+              "url": "/guides/getting-started-mcp.html",
+              "title": "Getting Started with Model Context Protocol (MCP)"
+            },
+            {
+              "path": "guides/llm-as-judge.adoc",
+              "url": "/guides/llm-as-judge.html",
+              "title": "LLM Response Evaluation with LLM-as-a-Judge"
+            },
+            {
+              "path": "observability/index.adoc",
+              "url": "/observability/index.html",
+              "title": "Observability"
+            },
+            {
+              "path": "search.adoc",
+              "url": "/search.html",
+              "title": "Search"
+            },
+            {
+              "path": "spring-projects.adoc",
+              "url": "/spring-projects.html",
+              "title": "Spring Projects"
+            },
+            {
+              "path": "upgrade-notes.adoc",
+              "url": "/upgrade-notes.html",
+              "title": "Upgrade Notes"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

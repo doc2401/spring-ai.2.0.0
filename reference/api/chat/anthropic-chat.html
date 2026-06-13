@@ -1,0 +1,3655 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Anthropic Chat :: Spring AI Reference</title>
+    <link rel="canonical" href="https://docs.spring.io/spring-ai/reference/api/chat/anthropic-chat.html">
+    <link rel="prev" href="bedrock-converse.html">
+    <link rel="next" href="azure-openai-chat.html">
+    <meta name="generator" content="Antora 3.1.15">
+    <script>
+!function (theme, navWidth) {
+  if (theme === 'dark') document.documentElement.classList.add('dark-theme')
+  if (navWidth) document.documentElement.style.setProperty('--nav-width', `${navWidth}px`)
+}(localStorage && localStorage.getItem('theme') || (matchMedia('(prefers-color-scheme: dark)')?.matches && 'dark'),
+  localStorage && localStorage.getItem('nav-width'))
+    </script>
+    <link rel="stylesheet" href="../../_/css/site.css">
+    <link rel="stylesheet" href="../../_/css/vendor/search.css">
+    <link rel="stylesheet" href="../../_/css/vendor/page-search.css">
+    <link rel="stylesheet" href="../../_/css/vendor/asciidoctor-tabs.css">
+
+    <meta name="antora-ui-version" content="v0.4.17"> 
+    <meta name="version" content="2.0.0">
+    <meta name="component" content="ai">
+    <meta name="latest-version" content="false">
+    <link rel="icon" href="../../_/img/favicon.ico" type="image/vnd.microsoft.icon">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://spring.io">
+        <img
+          id="springlogo"
+          class="block"
+          src="../../_/img/spring-logo.svg"
+          alt="Spring"
+        />
+      </a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Why Spring</a>
+          <div class="navbar-dropdown">
+            <a
+              class="navbar-item"
+              href="https://spring.io/why-spring"
+            >Overview</a>
+            <a
+              class="navbar-item"
+              href="https://spring.io/microservices"
+            >Microservices</a>
+            <a
+              class="navbar-item"
+              href="https://spring.io/reactive"
+            >Reactive</a>
+            <a class="navbar-item" href="https://spring.io/event-driven">Event
+              Driven</a>
+            <a class="navbar-item" href="https://spring.io/cloud">Cloud</a>
+            <a class="navbar-item" href="https://spring.io/web-applications">Web
+              Applications</a>
+            <a
+              class="navbar-item"
+              href="https://spring.io/serverless"
+            >Serverless</a>
+            <a class="navbar-item" href="https://spring.io/batch">Batch</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Learn</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://spring.io/learn">Overview</a>
+            <a
+              class="navbar-item"
+              href="https://spring.io/quickstart"
+            >Quickstart</a>
+            <a class="navbar-item" href="https://spring.io/guides">Guides</a>
+            <a class="navbar-item" href="https://spring.io/blog">Blog</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Projects</a>
+          <div class="navbar-dropdown" style="min-width: 280px">
+            <a
+              class="navbar-item"
+              href="https://spring.io/projects"
+            >Overview</a>
+            <a
+              class="navbar-item"
+              href="https://spring.io/projects/spring-boot"
+            >Spring Boot</a>
+            <a
+              class="navbar-item"
+              href="https://spring.io/projects/spring-framework"
+            >Spring Framework</a>
+            <a
+              class="navbar-item"
+              href="https://spring.io/projects/spring-cloud"
+            >Spring Cloud</a>
+            <a
+              class="navbar-item"
+              href="https://spring.io/projects/spring-cloud-dataflow"
+            >Spring Cloud Data Flow</a>
+            <a
+              class="navbar-item"
+              href="https://spring.io/projects/spring-data"
+            >Spring Data</a>
+            <a
+              class="navbar-item"
+              href="https://spring.io/projects/spring-integration"
+            >Spring Integration</a>
+            <a
+              class="navbar-item"
+              href="https://spring.io/projects/spring-batch"
+            >Spring Batch</a>
+            <a
+              class="navbar-item"
+              href="https://spring.io/projects/spring-security"
+            >Spring Security</a>
+            <a
+              class="navbar-item navbar-item-special"
+              href="https://spring.io/projects"
+            >View all projects</a>
+            <li class="navbar-item navbar-item-special-3">DEVELOPMENT TOOLS</li>
+            <a class="navbar-item" href="https://spring.io/tools">Spring Tools 4</a>
+            <a
+              class="navbar-item navbar-item-special-2"
+              href="https://start.spring.io"
+            >Spring Initializr
+              <svg
+                class="external-link-icon"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 16 16"
+              ><polyline
+                  points="15 10.94 15 15 1 15 1 1 5.06 1"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-miterlimit="10"
+                  stroke-width="2"
+                ></polyline><polyline
+                  points="8.93 1 15 1 15 7.07"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-miterlimit="10"
+                  stroke-width="2"
+                ></polyline><line
+                  x1="15"
+                  y1="1"
+                  x2="8"
+                  y2="8"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-miterlimit="10"
+                  stroke-width="2"
+                ></line></svg></a>
+          </div>
+        </div>
+
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Academy</a>
+          <div class="navbar-dropdown">
+            <a
+              class="navbar-item"
+              href="https://spring.academy/courses"
+            >Courses</a>
+            <a
+              class="navbar-item"
+              href="https://spring.academy/learning-path"
+            >Get Certified</a>
+          </div>
+        </div>
+
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Solutions</a>
+          <div class="navbar-dropdown lg">
+            <a class="navbar-item" href="https://spring.io/solutions">Overview</a>
+            <a class="navbar-item" href="https://spring.io/support">Spring Runtime</a>
+            <a class="navbar-item" href="https://spring.io/consulting">Spring Consulting</a>
+            <a class="navbar-item" href="https://spring.academy/teams">Spring Academy For Teams</a>
+            <a class="navbar-item" href="https://spring.io/security">Security Advisories</a>
+          </div>
+        </div>
+
+        <div class="navbar-item has-dropdown is-hoverable is-community">
+          <a class="navbar-link" href="#">Community</a>
+          <div class="navbar-dropdown">
+            <a
+              class="navbar-item"
+              href="https://spring.io/community"
+            >Overview</a>
+            <a class="navbar-item" href="https://spring.io/events">Events</a>
+            <a class="navbar-item" href="https://spring.io/team">Team</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <label class="theme-toggler">
+      <input
+        type="checkbox"
+        type="checkbox"
+        id="switch-theme-checkbox"
+        name="switch-theme-checkbox"
+      />
+      <span class="icon"><svg
+          aria-hidden="true"
+          focusable="false"
+          data-prefix="fas"
+          data-icon="moon"
+          class="svg-inline--fa fa-moon moon"
+          role="img"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 384 512"
+        ><path
+            fill="currentColor"
+            d="M223.5 32C100 32 0 132.3 0 256S100 480 223.5 480c60.6 0 115.5-24.2 155.8-63.4c5-4.9 6.3-12.5 3.1-18.7s-10.1-9.7-17-8.5c-9.8 1.7-19.8 2.6-30.1 2.6c-96.9 0-175.5-78.8-175.5-176c0-65.8 36-123.1 89.3-153.3c6.1-3.5 9.2-10.5 7.7-17.3s-7.3-11.9-14.3-12.5c-6.3-.5-12.6-.8-19-.8z"
+          ></path>
+        </svg>
+        <svg
+          aria-hidden="true"
+          focusable="false"
+          data-prefix="fas"
+          data-icon="sun"
+          class="svg-inline--fa fa-sun sun"
+          role="img"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 512 512"
+        ><path
+            fill="currentColor"
+            d="M361.5 1.2c5 2.1 8.6 6.6 9.6 11.9L391 121l107.9 19.8c5.3 1 9.8 4.6 11.9 9.6s1.5 10.7-1.6 15.2L446.9 256l62.3 90.3c3.1 4.5 3.7 10.2 1.6 15.2s-6.6 8.6-11.9 9.6L391 391 371.1 498.9c-1 5.3-4.6 9.8-9.6 11.9s-10.7 1.5-15.2-1.6L256 446.9l-90.3 62.3c-4.5 3.1-10.2 3.7-15.2 1.6s-8.6-6.6-9.6-11.9L121 391 13.1 371.1c-5.3-1-9.8-4.6-11.9-9.6s-1.5-10.7 1.6-15.2L65.1 256 2.8 165.7c-3.1-4.5-3.7-10.2-1.6-15.2s6.6-8.6 11.9-9.6L121 121 140.9 13.1c1-5.3 4.6-9.8 9.6-11.9s10.7-1.5 15.2 1.6L256 65.1 346.3 2.8c4.5-3.1 10.2-3.7 15.2-1.6zM160 256a96 96 0 1 1 192 0 96 96 0 1 1 -192 0zm224 0a128 128 0 1 0 -256 0 128 128 0 1 0 256 0z"
+          ></path>
+        </svg></span>
+      <span class="text">light</span>
+    </label>
+  </nav>
+</header>
+<script>
+!function (theme) {
+  if (theme === 'dark') {
+    document.getElementById('switch-theme-checkbox').parentElement.classList.add('active')
+  }
+}(localStorage && localStorage.getItem('theme') || (matchMedia('(prefers-color-scheme: dark)')?.matches && 'dark'))
+</script>
+<div class="body">
+<div class="nav-container" data-component="ai" data-version="2.0.0">
+  <aside class="nav">
+    <div class="panels">
+      <div class="nav-panel-menu is-active" data-panel="menu">
+        <nav class="nav-menu">
+<div class="context">
+  <span class="title">Spring AI</span>
+  <span class="version">2.0.0</span>
+  <button class="browse-version" id="browse-version">
+    <svg
+      height="24px"
+      id="Layer_1"
+      style="enable-background:new 0 0 512 512;"
+      version="1.1"
+      viewBox="0 0 512 512"
+      width="24px"
+      xml:space="preserve"
+    ><g><path
+          d="M256,224c-17.7,0-32,14.3-32,32s14.3,32,32,32c17.7,0,32-14.3,32-32S273.7,224,256,224L256,224z"
+        ></path><path
+          d="M128.4,224c-17.7,0-32,14.3-32,32s14.3,32,32,32c17.7,0,32-14.3,32-32S146,224,128.4,224L128.4,224z"
+        ></path><path
+          d="M384,224c-17.7,0-32,14.3-32,32s14.3,32,32,32s32-14.3,32-32S401.7,224,384,224L384,224z"
+        ></path></g></svg>
+  </button>
+  <div class="search">
+  <button class="DocSearch-Button search-button">
+    <svg enable-background="new 0 0 32 32" id="Glyph" version="1.1" viewBox="0 0 32 32" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+      <path d="M27.414,24.586l-5.077-5.077C23.386,17.928,24,16.035,24,14c0-5.514-4.486-10-10-10S4,8.486,4,14  s4.486,10,10,10c2.035,0,3.928-0.614,5.509-1.663l5.077,5.077c0.78,0.781,2.048,0.781,2.828,0  C28.195,26.633,28.195,25.367,27.414,24.586z M7,14c0-3.86,3.14-7,7-7s7,3.14,7,7s-3.14,7-7,7S7,17.86,7,14z" id="XMLID_223_"/>
+    </svg>
+    <span>Search</span>
+    <span class="search-key"></span>
+  </button>
+</div>
+</div><ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link"  href="../../index.html">Overview</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link"  href="../../concepts.html">AI Concepts</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link"  href="../../getting-started.html">Getting Started</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Reference</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link"  href="../chatclient.html">Chat Client API</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link"  href="../advisors.html">Advisors</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link"  href="../advisors-recursive.html">Recursive Advisors</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link"  href="../prompt.html">Prompts</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link"  href="../structured-output-converter.html">Structured Output</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link"  href="../multimodality.html">Multimodality</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link"  href="../index.html">Models</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link"  href="../chatmodel.html">Chat Models</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link"  href="comparison.html">Chat Models Comparison</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link"  href="bedrock-converse.html">Amazon Bedrock Converse</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="4">
+    <a class="nav-link"  href="anthropic-chat.html">Anthropic</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link"  href="azure-openai-chat.html">Azure OpenAI</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link"  href="deepseek-chat.html">DeepSeek</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link"  href="dmr-chat.html">Docker Model Runner</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link"  href="google-genai-chat.html">Google GenAI</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link"  href="groq-chat.html">Groq</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link"  href="mistralai-chat.html">Mistral AI</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link"  href="minimax-chat.html">MiniMax</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link"  href="nvidia-chat.html">NVIDIA</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link"  href="ollama-chat.html">Ollama</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link"  href="perplexity-chat.html">Perplexity AI</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link"  href="oci-genai-chat.html">OCI Generative AI</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link"  href="openai-chat.html">OpenAI</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link"  href="../embeddings.html">Embedding Models</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link"  href="../bedrock.html">Amazon Bedrock</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="5">
+    <a class="nav-link"  href="../embeddings/bedrock-cohere-embedding.html">Cohere</a>
+  </li>
+  <li class="nav-item" data-depth="5">
+    <a class="nav-link"  href="../embeddings/bedrock-titan-embedding.html">Titan</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link"  href="../embeddings/azure-openai-embeddings.html">Azure OpenAI</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link"  href="../embeddings/google-genai-embeddings-text.html">Google GenAI Text Embedding</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link"  href="../embeddings/mistralai-embeddings.html">Mistral AI</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link"  href="../embeddings/oci-genai-embeddings.html">OCI GenAI</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link"  href="../embeddings/ollama-embeddings.html">Ollama</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link"  href="../embeddings/onnx.html">(ONNX) Transformers</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link"  href="../embeddings/openai-embeddings.html">OpenAI</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link"  href="../embeddings/postgresml-embeddings.html">PostgresML</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">VertexAI</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="5">
+    <a class="nav-link"  href="../embeddings/vertexai-embeddings-text.html">Text Embedding</a>
+  </li>
+  <li class="nav-item" data-depth="5">
+    <a class="nav-link"  href="../embeddings/vertexai-embeddings-multimodal.html">Multimodal Embedding</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link"  href="../imageclient.html">Image Models</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link"  href="../image/azure-openai-image.html">Azure OpenAI</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link"  href="../image/openai-image.html">OpenAI</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link"  href="../image/stabilityai-image.html">Stability</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link"  href="../audio.html">Audio Models</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link"  href="../audio/transcriptions.html">Transcription API</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="5">
+    <a class="nav-link"  href="../audio/transcriptions/azure-openai-transcriptions.html">Azure OpenAI</a>
+  </li>
+  <li class="nav-item" data-depth="5">
+    <a class="nav-link"  href="../audio/transcriptions/openai-transcriptions.html">OpenAI</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link"  href="../audio/speech.html">Text-To-Speech (TTS) API</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="5">
+    <a class="nav-link"  href="../audio/speech/openai-speech.html">OpenAI</a>
+  </li>
+  <li class="nav-item" data-depth="5">
+    <a class="nav-link"  href="../audio/speech/elevenlabs-speech.html">ElevenLabs</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link"  href="../moderation.html">Moderation Models</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link"  href="../moderation/openai-moderation.html">OpenAI</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link"  href="../moderation/mistral-ai-moderation.html">Mistral AI</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link"  href="../chat-memory.html">Chat Memory</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link"  href="../tools.html">Tool Calling</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link"  href="../mcp/mcp-overview.html">Model Context Protocol (MCP)</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link"  href="../mcp/mcp-client-boot-starter-docs.html">MCP Client Boot Starters</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link"  href="../mcp/mcp-server-boot-starter-docs.html">MCP Server Boot Starters</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link"  href="../mcp/mcp-stdio-sse-server-boot-starter-docs.html">STDIO and SSE MCP Servers</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link"  href="../mcp/mcp-streamable-http-server-boot-starter-docs.html">Streamable-HTTP MCP Servers</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link"  href="../mcp/mcp-stateless-server-boot-starter-docs.html">Stateless Streamable-HTTP MCP Servers</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link"  href="../mcp/mcp-security.html">MCP Security (WIP)</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link"  href="../mcp/mcp-annotations-overview.html">MCP Annotations</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link"  href="../mcp/mcp-annotations-client.html">Client Annotations</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link"  href="../mcp/mcp-annotations-server.html">Server Annotations</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link"  href="../mcp/mcp-annotations-special-params.html">Special Parameters</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link"  href="../mcp/mcp-annotations-examples.html">MCP Annotations Examples</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link"  href="../retrieval-augmented-generation.html">Retrieval Augmented Generation (RAG)</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link"  href="../etl-pipeline.html">ETL Pipeline</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link"  href="../testing.html">Model Evaluation</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link"  href="../vectordbs.html">Vector Databases</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link"  href="../vectordbs/azure.html">Azure AI Service</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link"  href="../vectordbs/azure-cosmos-db.html">Azure Cosmos DB</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link"  href="../vectordbs/bedrock-knowledge-base.html">Amazon Bedrock Knowledge Base</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link"  href="../vectordbs/apache-cassandra.html">Apache Cassandra Vector Store</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link"  href="../vectordbs/chroma.html">Chroma</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link"  href="../vectordbs/couchbase.html">Couchbase</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link"  href="../vectordbs/elasticsearch.html">Elasticsearch</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link"  href="../vectordbs/gemfire.html">GemFire</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link"  href="../vectordbs/mariadb.html">MariaDB Vector Store</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link"  href="../vectordbs/milvus.html">Milvus</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link"  href="../vectordbs/mongodb.html">MongoDB Atlas</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link"  href="../vectordbs/neo4j.html">Neo4j</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link"  href="../vectordbs/opensearch.html">OpenSearch</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link"  href="../vectordbs/oracle.html">Oracle</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link"  href="../vectordbs/pgvector.html">PGvector</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link"  href="../vectordbs/pinecone.html">Pinecone</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link"  href="../vectordbs/qdrant.html">Qdrant</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link"  href="../vectordbs/redis.html">Redis</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link"  href="../vectordbs/typesense.html">Typesense</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link"  href="../vectordbs/weaviate.html">Weaviate</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link"  href="../vectordbs/s3-vector-store.html">S3 Vector Store</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link"  href="../../observability/index.html">Observability</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link"  href="../docker-compose.html">Development-time Services</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Testing</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link"  href="../testcontainers.html">Testcontainers</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Guides</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link"  href="https://github.com/spring-ai-community/awesome-spring-ai">Awesome Spring AI</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link"  href="../../guides/getting-started-mcp.html">Getting Started with MCP</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link"  href="../../guides/dynamic-tool-search.html">Dynamic Tool Discovery</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link"  href="../../guides/llm-as-judge.html">LLM-as-a-Judge Evaluation</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link"  href="prompt-engineering-patterns.html">Prompt Engineering Patterns</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link"  href="../effective-agents.html">Building Effective Agents</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link"  href="https://catalog.workshops.aws/java-spring-ai-agents">Building agents with Spring AI by AWS</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link"  href="https://catalog.workshops.aws/java-spring-ai-agentcore">Building agents with Spring AI and AgentCore by AWS</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link"  href="https://github.com/microsoft/Spring-AI-for-Beginners">Spring AI for Beginners by Microsoft</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link"  href="../../upgrade-notes.html">Upgrade Notes</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link"  href="../tools-migration.html">Migrating FunctionCallback to ToolCallback API</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link"  href="anthropic-migration.html">Migrating the Anthropic Module to the Official Java SDK</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+          <div class="toggle-sm">
+            <button id="nav-toggle-2" class="nav-toggle"></button>
+          </div>
+        </nav>
+      </div>
+      <div class="nav-collapse">
+        <button id="nav-collapse-toggle"><span></span></button>        
+      </div>
+    </div>
+    <div class="nav-resize"></div>
+  </aside>
+</div>
+<script>
+!function (sidebar) {
+  if (sidebar) {
+    document.body.classList.add('nav-sm')
+  }
+}(localStorage && localStorage.getItem('sidebar') === 'close')
+</script><main class="article">
+<div class="toolbar" role="navigation">
+  <button id="nav-toggle-1" class="nav-toggle"></button>
+<div class="search">
+  <button class="DocSearch-Button search-button">
+    <svg enable-background="new 0 0 32 32" id="Glyph" version="1.1" viewBox="0 0 32 32" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+      <path d="M27.414,24.586l-5.077-5.077C23.386,17.928,24,16.035,24,14c0-5.514-4.486-10-10-10S4,8.486,4,14  s4.486,10,10,10c2.035,0,3.928-0.614,5.509-1.663l5.077,5.077c0.78,0.781,2.048,0.781,2.828,0  C28.195,26.633,28.195,25.367,27.414,24.586z M7,14c0-3.86,3.14-7,7-7s7,3.14,7,7s-3.14,7-7,7S7,17.86,7,14z" id="XMLID_223_"/>
+    </svg>
+    <span>Search</span>
+    <span class="search-key"></span>
+  </button>
+</div>
+</div>
+  <div class="content">
+<aside class="sidebar">
+  <div class="content">
+    <div
+      class="toc"
+      data-title="Anthropic Chat"
+      data-levels="2"
+    >
+      <div class="toc-menu"></div>
+    </div>
+    <div class="sidebar-links">
+        <a href="file:///workspaces/spring-ai/spring-ai-docs/src/main/antora/modules/ROOT/pages/api/chat/anthropic-chat.adoc">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="24"
+            viewBox="0 0 24 24"
+            width="24"
+          ><path
+              d="m16 2.012 3 3L16.713 7.3l-3-3zM4 14v3h3l8.299-8.287-3-3zm0 6h16v2H4z"
+            ></path></svg>
+          Edit this Page
+        </a>
+        <a href="https://github.com/spring-projects/spring-ai" title="GitHub">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="512px"
+            id="Layer_1"
+            version="1.1"
+            viewBox="0 0 512 512"
+            width="512px"
+          ><style type="text/css"><![CDATA[
+              .st0{fill-rule:evenodd;clip-rule:evenodd;} ]]></style><g><path
+                class="st0"
+                d="M256,32C132.3,32,32,134.8,32,261.7c0,101.5,64.2,187.5,153.2,217.9c11.2,2.1,15.3-5,15.3-11.1   c0-5.5-0.2-19.9-0.3-39.1c-62.3,13.9-75.5-30.8-75.5-30.8c-10.2-26.5-24.9-33.6-24.9-33.6c-20.3-14.3,1.5-14,1.5-14   c22.5,1.6,34.3,23.7,34.3,23.7c20,35.1,52.4,25,65.2,19.1c2-14.8,7.8-25,14.2-30.7c-49.7-5.8-102-25.5-102-113.5   c0-25.1,8.7-45.6,23-61.6c-2.3-5.8-10-29.2,2.2-60.8c0,0,18.8-6.2,61.6,23.5c17.9-5.1,37-7.6,56.1-7.7c19,0.1,38.2,2.6,56.1,7.7   c42.8-29.7,61.5-23.5,61.5-23.5c12.2,31.6,4.5,55,2.2,60.8c14.3,16.1,23,36.6,23,61.6c0,88.2-52.4,107.6-102.3,113.3   c8,7.1,15.2,21.1,15.2,42.5c0,30.7-0.3,55.5-0.3,63c0,6.1,4,13.3,15.4,11C415.9,449.1,480,363.1,480,261.7   C480,134.8,379.7,32,256,32z"
+              ></path></g></svg>
+          GitHub Project
+        </a>
+    </div>
+  </div>
+</aside>
+<article class="doc">
+<div class="breadcrumbs-container">
+  <nav class="breadcrumbs" aria-label="breadcrumbs">
+    <ul>
+      <li><a href="../../index.html">Spring AI</a></li>
+      <li>Reference</li>
+      <li><a href="../index.html">Models</a></li>
+      <li><a href="../chatmodel.html">Chat Models</a></li>
+      <li><a href="anthropic-chat.html">Anthropic</a></li>
+    </ul>
+  </nav>
+</div><h1 id="page-title" class="page">Anthropic Chat</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Spring AI supports Anthropic&#8217;s Claude models through the official <a href="https://github.com/anthropics/anthropic-sdk-java">Anthropic Java SDK</a>, providing access to Claude through Anthropic&#8217;s API.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_prerequisites"><a class="anchor" href="#_prerequisites"></a>Prerequisites</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Create an account at the <a href="https://console.anthropic.com/">Anthropic Console</a> and generate an API key on the <a href="https://console.anthropic.com/settings/keys">API Keys page</a>.</p>
+</div>
+<div class="sect2">
+<h3 id="_add_repositories_and_bom"><a class="anchor" href="#_add_repositories_and_bom"></a>Add Repositories and BOM</h3>
+<div class="paragraph">
+<p>Spring AI artifacts are published in Maven Central and Spring Snapshot repositories.
+Refer to the <a href="../../getting-started.html#artifact-repositories" class="xref page">Artifact Repositories</a> section to add these repositories to your build system.</p>
+</div>
+<div class="paragraph">
+<p>To help with dependency management, Spring AI provides a BOM (bill of materials) to ensure that a consistent version of Spring AI is used throughout the entire project. Refer to the <a href="../../getting-started.html#dependency-management" class="xref page">Dependency Management</a> section to add the Spring AI BOM to your build system.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_auto_configuration"><a class="anchor" href="#_auto_configuration"></a>Auto-Configuration</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Spring Boot auto-configuration is available via the <code>spring-ai-starter-model-anthropic</code> starter.</p>
+</div>
+<div id="_tabs_1" class="openblock tabs is-sync is-loading">
+<div class="content">
+<div class="ulist tablist">
+<ul>
+<li id="_tabs_1_maven" class="tab">
+<p>Maven</p>
+</li>
+<li id="_tabs_1_gradle" class="tab">
+<p>Gradle</p>
+</li>
+</ul>
+</div>
+<div id="_tabs_1_maven--panel" class="tabpanel" aria-labelledby="_tabs_1_maven">
+<div class="paragraph">
+<p>Add it to your project&#8217;s Maven <code>pom.xml</code> file:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.ai&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-ai-starter-model-anthropic&lt;/artifactId&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div>
+</div>
+<div id="_tabs_1_gradle--panel" class="tabpanel" aria-labelledby="_tabs_1_gradle">
+<div class="paragraph">
+<p>or to your Gradle <code>build.gradle</code> build file:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">dependencies {
+    implementation 'org.springframework.ai:spring-ai-starter-model-anthropic'
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Refer to the <a href="../../getting-started.html#dependency-management" class="xref page">Dependency Management</a> section to add the Spring AI BOM to your build file.
+</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_configuration_properties"><a class="anchor" href="#_configuration_properties"></a>Configuration Properties</h3>
+<div class="paragraph">
+<p>Use the <code>spring.ai.anthropic.*</code> properties to configure the Anthropic connection and chat options:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 55.5555%;">
+<col style="width: 11.1112%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Property</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spring.ai.anthropic.api-key</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Anthropic API key</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spring.ai.anthropic.base-url</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">API base URL</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="https://api.anthropic.com" class="bare">api.anthropic.com</a></code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spring.ai.anthropic.timeout</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Request timeout for the Anthropic client</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>60s</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spring.ai.anthropic.max-retries</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Maximum number of retries for failed requests</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>2</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spring.ai.anthropic.custom-headers.*</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Custom HTTP headers to add to all Anthropic client requests</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spring.ai.anthropic.chat.model</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Model name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>claude-haiku-4-5</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spring.ai.anthropic.chat.max-tokens</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Maximum tokens</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>4096</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spring.ai.anthropic.chat.temperature</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sampling temperature</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spring.ai.anthropic.chat.top-p</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Top-p sampling</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spring.ai.anthropic.chat.top-k</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Top-k sampling</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spring.ai.anthropic.chat.cache-options.strategy</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Caching strategy to use</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>NONE</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spring.ai.anthropic.chat.cache-options.multi-block-system-caching</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Use separate blocks for each system message</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>false</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spring.ai.anthropic.chat.http-headers</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Per-request HTTP headers to pass to individual API calls.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spring.ai.anthropic.chat.inference-geo</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Geographic region where the request is processed (<code>us</code> or <code>eu</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spring.ai.anthropic.chat.web-search-tool.max-uses</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Maximum number of web searches per request</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spring.ai.anthropic.chat.web-search-tool.allowed-domains</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Comma-separated list of domains to restrict search results to</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spring.ai.anthropic.chat.web-search-tool.blocked-domains</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Comma-separated list of domains to exclude from search results</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spring.ai.anthropic.chat.web-search-tool.user-location.city</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">City for localizing search results</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spring.ai.anthropic.chat.web-search-tool.user-location.country</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ISO 3166-1 alpha-2 country code</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spring.ai.anthropic.chat.web-search-tool.user-location.region</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Region or state</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spring.ai.anthropic.chat.web-search-tool.user-location.timezone</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">IANA timezone identifier</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spring.ai.anthropic.chat.service-tier</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Capacity routing: <code>auto</code> (use priority if available) or <code>standard_only</code> (always standard). See <a href="https://docs.claude.com/en/api/service-tiers">Service Tiers</a>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_manual_configuration"><a class="anchor" href="#_manual_configuration"></a>Manual Configuration</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <a href="https://github.com/spring-projects/spring-ai/blob/main/models/spring-ai-anthropic/src/main/java/org/springframework/ai/anthropic/AnthropicChatModel.java">AnthropicChatModel</a> implements the <code>ChatModel</code> interface and uses the official Anthropic Java SDK to connect to Claude.</p>
+</div>
+<div id="_tabs_2" class="openblock tabs is-sync is-loading">
+<div class="content">
+<div class="ulist tablist">
+<ul>
+<li id="_tabs_2_maven" class="tab">
+<p>Maven</p>
+</li>
+<li id="_tabs_2_gradle" class="tab">
+<p>Gradle</p>
+</li>
+</ul>
+</div>
+<div id="_tabs_2_maven--panel" class="tabpanel" aria-labelledby="_tabs_2_maven">
+<div class="paragraph">
+<p>Add the <code>spring-ai-anthropic</code> dependency to your project&#8217;s Maven <code>pom.xml</code> file:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.ai&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-ai-anthropic&lt;/artifactId&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div>
+</div>
+<div id="_tabs_2_gradle--panel" class="tabpanel" aria-labelledby="_tabs_2_gradle">
+<div class="paragraph">
+<p>or to your Gradle <code>build.gradle</code> build file:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">dependencies {
+    implementation 'org.springframework.ai:spring-ai-anthropic'
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Refer to the <a href="../../getting-started.html#dependency-management" class="xref page">Dependency Management</a> section to add the Spring AI BOM to your build file.
+</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_authentication"><a class="anchor" href="#_authentication"></a>Authentication</h3>
+<div class="paragraph">
+<p>Configure your API key either programmatically or via environment variable:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">var chatOptions = AnthropicChatOptions.builder()
+    .model("claude-sonnet-4-20250514")
+    .maxTokens(1024)
+    .apiKey(System.getenv("ANTHROPIC_API_KEY"))
+    .build();
+
+var chatModel = AnthropicChatModel.builder()
+    .options(chatOptions)
+    .build();</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Or set the environment variable and let the SDK auto-detect it:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">export ANTHROPIC_API_KEY=&lt;your-api-key&gt;</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">// API key will be detected from ANTHROPIC_API_KEY environment variable
+var chatModel = AnthropicChatModel.builder()
+    .options(AnthropicChatOptions.builder()
+        .model("claude-sonnet-4-20250514")
+        .maxTokens(1024)
+        .build())
+    .build();</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_basic_usage"><a class="anchor" href="#_basic_usage"></a>Basic Usage</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">ChatResponse response = chatModel.call(
+    new Prompt("Generate the names of 5 famous pirates."));
+
+// Or with streaming responses
+Flux&lt;ChatResponse&gt; stream = chatModel.stream(
+    new Prompt("Generate the names of 5 famous pirates."));</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="chat-options"><a class="anchor" href="#chat-options"></a>Runtime Options</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <a href="https://github.com/spring-projects/spring-ai/blob/main/models/spring-ai-anthropic/src/main/java/org/springframework/ai/anthropic/AnthropicChatOptions.java">AnthropicChatOptions.java</a> class provides model configurations such as the model to use, temperature, max tokens, etc.</p>
+</div>
+<div class="paragraph">
+<p>On start-up, configure default options with the <code>AnthropicChatModel.builder().defaultOptions(options).build()</code> constructor.</p>
+</div>
+<div class="paragraph">
+<p>At run-time, you can override the default options by adding new, request-specific options to the <code>Prompt</code> call.
+For example, to override the default model and temperature for a specific request:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">ChatResponse response = chatModel.call(
+    new Prompt(
+        "Generate the names of 5 famous pirates.",
+        AnthropicChatOptions.builder()
+            .model("claude-sonnet-4-20250514")
+            .temperature(0.4)
+        .build()
+    ));</code></pre>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_chat_options"><a class="anchor" href="#_chat_options"></a>Chat Options</h3>
+<table class="tableblock frame-all grid-all stripes-even stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 55.5555%;">
+<col style="width: 11.1112%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Option</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">model</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Name of the Claude model to use. Models include: <code>claude-sonnet-4-20250514</code>, <code>claude-opus-4-20250514</code>, <code>claude-3-5-sonnet-20241022</code>, <code>claude-3-5-haiku-20241022</code>, etc. See <a href="https://docs.anthropic.com/en/docs/about-claude/models">Claude Models</a>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>claude-sonnet-4-20250514</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">maxTokens</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The maximum number of tokens to generate in the response.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4096</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">temperature</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Controls randomness in the response. Higher values make output more random, lower values make it more deterministic. Range: 0.0-1.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">topP</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Nucleus sampling parameter. The model considers tokens with top_p probability mass. <strong>Supported on Claude Opus 4.6 and earlier models only. Deprecated by Anthropic for models released after Claude Opus 4.6 (e.g. <code>claude-opus-4-7</code>); values <code>&lt; 0.99</code> are rejected with HTTP 400, and values <code>&gt;= 0.99</code> are accepted as a backward-compatibility no-op (no actual filtering applied).</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">topK</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Only sample from the top K options for each token. <strong>Supported on Claude Opus 4.6 and earlier models only. Deprecated by Anthropic for models released after Claude Opus 4.6 (e.g. <code>claude-opus-4-7</code>); any value is rejected with HTTP 400 on those models.</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">stopSequences</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Custom sequences that will cause the model to stop generating.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">apiKey</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The API key for authentication. Auto-detects from <code>ANTHROPIC_API_KEY</code> environment variable if not set.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">baseUrl</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The base URL for the Anthropic API.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://api.anthropic.com" class="bare">api.anthropic.com</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">timeout</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Request timeout duration.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">60 seconds</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">maxRetries</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Maximum number of retry attempts for failed requests.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">proxy</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Proxy settings for the HTTP client.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">customHeaders</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Custom HTTP headers to include on all requests (client-level).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">httpHeaders</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Per-request HTTP headers. These are added to individual API calls via <code>MessageCreateParams.putAdditionalHeader()</code>. Useful for request-level tracking, beta API headers, or routing.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cacheOptions</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Options for configuring prompt caching behavior. Includes caching strategy, multi-block caching, TTL, and content length requirements.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">thinking</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Thinking configuration. Use the convenience builders <code>thinkingEnabled(budgetTokens)</code>, <code>thinkingEnabled(budgetTokens, display)</code>, <code>thinkingAdaptive()</code>, <code>thinkingAdaptive(display)</code>, or <code>thinkingDisabled()</code>, or pass a raw <code>ThinkingConfigParam</code>. The <code>display</code> parameter controls how thinking content appears in the response: <code>SUMMARIZED</code> (condensed summary) or <code>OMITTED</code> (redacted, signature only).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">outputConfig</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Output configuration for structured output (JSON schema) and effort control. Use <code>outputConfig(OutputConfig)</code> for full control, or the convenience methods <code>outputSchema(String)</code> and <code>effort(OutputConfig.Effort)</code>. Requires <code>claude-sonnet-4-6</code> or newer.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">inferenceGeo</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Controls the geographic region where the request is processed. Supported values: <code>us</code>, <code>eu</code>. Used for data residency compliance. Configurable via <code>spring.ai.anthropic.chat.inference-geo</code>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">serviceTier</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Controls capacity routing for the request. Use <code>MessageCreateParams.ServiceTier.AUTO</code> to opportunistically use priority capacity, or <code>STANDARD_ONLY</code> to always use standard capacity. See <a href="https://docs.claude.com/en/api/service-tiers">Service Tiers</a>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_tool_calling_options"><a class="anchor" href="#_tool_calling_options"></a>Tool Calling Options</h3>
+<table class="tableblock frame-all grid-all stripes-even stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 55.5555%;">
+<col style="width: 11.1112%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Option</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">toolChoice</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Controls which tool (if any) is called by the model. Use <code>ToolChoiceAuto</code>, <code>ToolChoiceAny</code>, <code>ToolChoiceTool</code>, or <code>ToolChoiceNone</code>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">AUTO</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">toolCallbacks</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">List of tool callbacks to register with the model.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">disableParallelToolUse</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">When true, the model will use at most one tool per response.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+In addition to the model-specific <a href="https://github.com/spring-projects/spring-ai/blob/main/models/spring-ai-anthropic/src/main/java/org/springframework/ai/anthropic/AnthropicChatOptions.java">AnthropicChatOptions</a>, you can use a portable <a href="https://github.com/spring-projects/spring-ai/blob/main/spring-ai-model/src/main/java/org/springframework/ai/chat/prompt/ChatOptions.java">ChatOptions</a> instance, created with <a href="https://github.com/spring-projects/spring-ai/blob/main/spring-ai-model/src/main/java/org/springframework/ai/chat/prompt/DefaultChatOptionsBuilder.java">ChatOptions#builder()</a>.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_rate_limit_metadata"><a class="anchor" href="#_rate_limit_metadata"></a>Rate Limit Metadata</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Anthropic API includes <a href="https://docs.anthropic.com/en/api/rate-limits#response-headers">rate limit headers</a> on every response that report your current request and token budgets along with when each window resets.
+Spring AI exposes this data through the standard <code>ChatResponseMetadata#getRateLimit()</code> accessor, which returns an <code>AnthropicRateLimit</code> populated from the response headers.</p>
+</div>
+<div class="paragraph">
+<p>The portable <code>RateLimit</code> interface exposes the request and token families:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">ChatResponse response = chatModel.call(prompt);
+
+RateLimit rateLimit = response.getMetadata().getRateLimit();
+rateLimit.getRequestsLimit();      // overall request ceiling
+rateLimit.getRequestsRemaining();  // requests left in the current window
+rateLimit.getRequestsReset();      // time until the request window resets
+
+rateLimit.getTokensLimit();        // overall token ceiling
+rateLimit.getTokensRemaining();    // tokens left in the current window
+rateLimit.getTokensReset();        // time until the token window resets</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Anthropic also reports separate buckets for input tokens and output tokens.
+These are exposed by the <code>AnthropicRateLimit</code> concrete type:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">if (response.getMetadata().getRateLimit() instanceof AnthropicRateLimit anthropic) {
+    anthropic.getInputTokensLimit();
+    anthropic.getInputTokensRemaining();
+    anthropic.getInputTokensReset();
+
+    anthropic.getOutputTokensLimit();
+    anthropic.getOutputTokensRemaining();
+    anthropic.getOutputTokensReset();
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If Anthropic does not return any rate-limit headers on a given response, <code>getRateLimit()</code> returns an <code>EmptyRateLimit</code> instance instead, matching the convention used by other Spring AI providers.</p>
+</div>
+<div class="paragraph">
+<p>Rate-limit metadata is populated on both the synchronous <code>call(Prompt)</code> and the streaming <code>stream(Prompt)</code> paths.
+For streaming responses the headers are read once at stream start and attached to the response chunk that carries the final usage, so <code>getRateLimit()</code> resolves to a populated <code>AnthropicRateLimit</code> there.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+To read the response headers, the streaming path consumes the Anthropic SDK&#8217;s blocking stream on a <code>Schedulers.boundedElastic()</code> worker, so a streaming call holds a worker thread for the duration of the stream.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_tool_calling"><a class="anchor" href="#_tool_calling"></a>Tool Calling</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can register custom Java functions or methods with the <code>AnthropicChatModel</code> and have Claude intelligently choose to output a JSON object containing arguments to call one or many of the registered functions/tools.
+This is a powerful technique to connect the LLM capabilities with external tools and APIs.
+Read more about <a href="../tools.html" class="xref page">Tool Calling</a>.</p>
+</div>
+<div class="paragraph">
+<p><code>AnthropicChatModel</code> does not execute tool calls internally.
+Tool execution must be handled externally using one of two supported approaches:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong><a href="../tools.html#_chatclient_tool_execution" class="xref page">ChatClient with ToolCallingAdvisor</a></strong> — the recommended approach for most use cases. <code>ToolCallingAdvisor</code> is automatically registered and manages the tool-call loop transparently.</p>
+</li>
+<li>
+<p><strong><a href="../tools.html#_user_controlled_tool_execution" class="xref page">User-controlled tool execution</a></strong> — use <code>DefaultToolCallingManager</code> directly when you need full control over the loop (for example, when combining tool calling with prompt caching).</p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="_tool_calling_via_chatclient_recommended"><a class="anchor" href="#_tool_calling_via_chatclient_recommended"></a>Tool Calling via ChatClient (Recommended)</h3>
+<div class="paragraph">
+<p>Use <code>ChatClient</code> with <code>ToolCallingAdvisor</code> for both synchronous and streaming tool execution.
+<code>ToolCallingAdvisor</code> is auto-registered when tools are present, so no explicit advisor configuration is required.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">ToolCallback weatherCallback = FunctionToolCallback.builder("getCurrentWeather", new WeatherService())
+    .description("Get the weather in location")
+    .inputType(WeatherService.Request.class)
+    .build();
+
+// Synchronous
+String response = ChatClient.create(chatModel)
+    .prompt()
+    .user("What's the weather in Paris, Tokyo, and New York?")
+    .tools(weatherCallback)
+    .call()
+    .content();
+
+// Streaming
+Flux&lt;String&gt; stream = ChatClient.create(chatModel)
+    .prompt()
+    .user("What's the weather in Paris, Tokyo, and New York?")
+    .tools(weatherCallback)
+    .stream()
+    .content();</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_user_controlled_tool_execution"><a class="anchor" href="#_user_controlled_tool_execution"></a>User-Controlled Tool Execution</h3>
+<div class="paragraph">
+<p>Use this pattern when you need direct access to the <code>ChatModel</code> API — for example, when combining tool calling with <a href="#_prompt_caching">prompt caching</a>.
+Invoke <code>ChatModel</code> directly without <code>ToolCallingAdvisor</code>; check for tool calls yourself and drive the loop using <code>ToolCallingManager</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">ToolCallingManager toolCallingManager = ToolCallingManager.builder().build();
+
+AnthropicChatOptions options = AnthropicChatOptions.builder()
+    .toolCallbacks(ToolCallbacks.from(new WeatherService()))
+    .build();
+
+Prompt prompt = new Prompt("What's the weather in Paris, Tokyo, and New York?", options);
+ChatResponse response = chatModel.call(prompt);
+
+while (response.hasToolCalls()) {
+    ToolExecutionResult result = toolCallingManager.executeToolCalls(prompt, response);
+    prompt = new Prompt(result.conversationHistory(), options);
+    response = chatModel.call(prompt);
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For streaming, aggregate each streaming response with <code>MessageAggregator</code> to detect tool calls across chunks:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">AtomicReference&lt;ChatResponse&gt; aggregatedRef = new AtomicReference&lt;&gt;();
+new MessageAggregator()
+    .aggregate(chatModel.stream(prompt), aggregatedRef::set)
+    .collectList().block();
+
+while (aggregatedRef.get().hasToolCalls()) {
+    ToolExecutionResult result = toolCallingManager.executeToolCalls(prompt, aggregatedRef.get());
+    prompt = new Prompt(result.conversationHistory(), options);
+    aggregatedRef.set(null);
+    new MessageAggregator()
+        .aggregate(chatModel.stream(prompt), aggregatedRef::set)
+        .collectList().block();
+}
+
+String content = aggregatedRef.get().getResult().getOutput().getText();</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_tool_choice_options"><a class="anchor" href="#_tool_choice_options"></a>Tool Choice Options</h3>
+<div class="paragraph">
+<p>Control which tool Claude selects with the <code>toolChoice</code> option:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java"><span class="fold-block is-hidden-folded">import com.anthropic.models.messages.ToolChoiceAny;
+import com.anthropic.models.messages.ToolChoiceTool;
+import com.anthropic.models.messages.ToolChoiceNone;
+
+</span><span class="fold-block">// Force Claude to use any available tool
+var options = AnthropicChatOptions.builder()
+    .toolChoice(ToolChoiceAny.builder().build())
+    .toolCallbacks(...)
+    .build();
+
+// Force Claude to use a specific tool
+var options = AnthropicChatOptions.builder()
+    .toolChoice(ToolChoiceTool.builder().name("getCurrentWeather").build())
+    .toolCallbacks(...)
+    .build();
+
+// Prevent tool use entirely
+var options = AnthropicChatOptions.builder()
+    .toolChoice(ToolChoiceNone.builder().build())
+    .toolCallbacks(...)
+    .build();</span></code></pre>
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The Anthropic Java SDK provides convenient static factory methods for common tool choices, which can make your code more concise:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>ToolChoice.auto()</code> can be used instead of <code>ToolChoice.ofAuto(&#8230;&#8203;)</code>.</p>
+</li>
+<li>
+<p><code>ToolChoice.any()</code> can be used instead of <code>ToolChoice.ofAny(&#8230;&#8203;)</code>.</p>
+</li>
+<li>
+<p><code>ToolChoice.none()</code> can be used instead of <code>ToolChoice.ofNone(&#8230;&#8203;)</code>.</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_streaming"><a class="anchor" href="#_streaming"></a>Streaming</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Anthropic SDK module supports both synchronous and streaming responses. Streaming allows Claude to return responses incrementally as they&#8217;re generated.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">Flux&lt;ChatResponse&gt; stream = chatModel.stream(new Prompt("Tell me a story"));
+
+stream.subscribe(response -&gt; {
+    String content = response.getResult().getOutput().getContent();
+    if (content != null) {
+        System.out.print(content);
+    }
+});</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_extended_thinking"><a class="anchor" href="#_extended_thinking"></a>Extended Thinking</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Anthropic Claude models support a "thinking" feature that allows the model to show its reasoning process before providing a final answer. This is especially useful for complex questions that require step-by-step reasoning, such as math, logic, and analysis tasks.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p><strong>Supported Models</strong></p>
+</div>
+<div class="paragraph">
+<p>The thinking feature is supported by the following Claude models:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Claude 4 models (<code>claude-opus-4-20250514</code>, <code>claude-sonnet-4-20250514</code>)</p>
+</li>
+<li>
+<p>Claude 3.7 Sonnet (<code>claude-3-7-sonnet-20250219</code>)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Model capabilities:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Claude 3.7 Sonnet</strong>: Returns full thinking output.</p>
+</li>
+<li>
+<p><strong>Claude 4 models</strong>: Support summarized thinking and enhanced tool integration.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>API request structure is the same across all supported models, but output behavior varies.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_thinking_configuration"><a class="anchor" href="#_thinking_configuration"></a>Thinking Configuration</h3>
+<div class="paragraph">
+<p>To enable thinking, configure the following:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Set a thinking budget</strong>: The <code>budgetTokens</code> must be &gt;= 1024 and less than <code>maxTokens</code>.</p>
+</li>
+<li>
+<p><strong>Set temperature to 1.0</strong>: Required when thinking is enabled.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_convenience_builder_methods"><a class="anchor" href="#_convenience_builder_methods"></a>Convenience Builder Methods</h3>
+<div class="paragraph">
+<p><code>AnthropicChatOptions.Builder</code> provides convenience methods for thinking configuration:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">// Enable thinking with a specific token budget
+var options = AnthropicChatOptions.builder()
+    .model("claude-sonnet-4-20250514")
+    .temperature(1.0)
+    .maxTokens(16000)
+    .thinkingEnabled(10000L)    // budget must be &gt;= 1024 and &lt; maxTokens
+    .build();
+
+// Let Claude adaptively decide whether to think
+var options = AnthropicChatOptions.builder()
+    .model("claude-sonnet-4-20250514")
+    .thinkingAdaptive()
+    .build();
+
+// Explicitly disable thinking
+var options = AnthropicChatOptions.builder()
+    .model("claude-sonnet-4-20250514")
+    .thinkingDisabled()
+    .build();</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can also use the raw SDK <code>ThinkingConfigParam</code> directly:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java"><span class="fold-block is-hidden-folded">import com.anthropic.models.messages.ThinkingConfigParam;
+import com.anthropic.models.messages.ThinkingConfigEnabled;
+
+</span><span class="fold-block">var options = AnthropicChatOptions.builder()
+    .thinking(ThinkingConfigParam.ofEnabled(
+        ThinkingConfigEnabled.builder().budgetTokens(10000L).build()))
+    .build();</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_thinking_display_setting"><a class="anchor" href="#_thinking_display_setting"></a>Thinking Display Setting</h3>
+<div class="paragraph">
+<p>By default, full thinking output is returned in the response. You can control this with the <code>display</code> parameter to reduce token costs:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong><code>SUMMARIZED</code></strong> — Claude still thinks fully, but returns a condensed summary instead of the raw chain-of-thought. Reduces output tokens while still providing insight into the reasoning.</p>
+</li>
+<li>
+<p><strong><code>OMITTED</code></strong> — Thinking is performed but completely redacted from the response. Only a cryptographic signature is returned (needed for multi-turn continuity). Lowest output token cost.</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java"><span class="fold-block is-hidden-folded">import com.anthropic.models.messages.ThinkingConfigEnabled;
+import com.anthropic.models.messages.ThinkingConfigAdaptive;
+
+</span><span class="fold-block">// Enabled thinking with summarized display
+var options = AnthropicChatOptions.builder()
+    .model("claude-sonnet-4-20250514")
+    .temperature(1.0)
+    .maxTokens(16000)
+    .thinkingEnabled(10000L, ThinkingConfigEnabled.Display.SUMMARIZED)
+    .build();
+
+// Enabled thinking with omitted display
+var options = AnthropicChatOptions.builder()
+    .model("claude-sonnet-4-20250514")
+    .temperature(1.0)
+    .maxTokens(16000)
+    .thinkingEnabled(10000L, ThinkingConfigEnabled.Display.OMITTED)
+    .build();
+
+// Adaptive thinking with summarized display
+var options = AnthropicChatOptions.builder()
+    .model("claude-sonnet-4-20250514")
+    .temperature(1.0)
+    .maxTokens(16000)
+    .thinkingAdaptive(ThinkingConfigAdaptive.Display.SUMMARIZED)
+    .build();</span></code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The display setting does not affect the quality of the final answer — Claude performs the same amount of thinking regardless. It only controls what thinking content is returned in the response.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_non_streaming_example"><a class="anchor" href="#_non_streaming_example"></a>Non-streaming Example</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">var options = AnthropicChatOptions.builder()
+    .model("claude-sonnet-4-20250514")
+    .temperature(1.0)
+    .maxTokens(16000)
+    .thinkingEnabled(10000L)
+    .build();
+
+ChatResponse response = chatModel.call(
+    new Prompt("Are there an infinite number of prime numbers such that n mod 4 == 3?", options));
+
+// The response contains multiple generations:
+// - ThinkingBlock generations (with "signature" in metadata)
+// - TextBlock generations (with the final answer)
+for (Generation generation : response.getResults()) {
+    AssistantMessage message = generation.getOutput();
+    if (message.getMetadata().containsKey("signature")) {
+        // This is a thinking block - contains Claude's reasoning
+        System.out.println("Thinking: " + message.getText());
+        System.out.println("Signature: " + message.getMetadata().get("signature"));
+    }
+    else if (message.getMetadata().containsKey("data")) {
+        // This is a redacted thinking block (safety-redacted reasoning)
+        System.out.println("Redacted thinking data: " + message.getMetadata().get("data"));
+    }
+    else if (message.getText() != null &amp;&amp; !message.getText().isBlank()) {
+        // This is the final text response
+        System.out.println("Answer: " + message.getText());
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_streaming_example"><a class="anchor" href="#_streaming_example"></a>Streaming Example</h3>
+<div class="paragraph">
+<p>Thinking is fully supported in streaming mode. Thinking deltas and signature deltas are emitted as they arrive:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">var options = AnthropicChatOptions.builder()
+    .model("claude-sonnet-4-20250514")
+    .temperature(1.0)
+    .maxTokens(16000)
+    .thinkingEnabled(10000L)
+    .build();
+
+Flux&lt;ChatResponse&gt; stream = chatModel.stream(
+    new Prompt("Are there an infinite number of prime numbers such that n mod 4 == 3?", options));
+
+stream.subscribe(response -&gt; {
+    Generation generation = response.getResult();
+    AssistantMessage message = generation.getOutput();
+
+    if (message.getMetadata().containsKey("thinking")) {
+        // Incremental thinking content
+        System.out.print(message.getText());
+    }
+    else if (message.getMetadata().containsKey("signature")) {
+        // Thinking block signature (emitted at end of thinking)
+        System.out.println("\nSignature: " + message.getMetadata().get("signature"));
+    }
+    else if (message.getText() != null) {
+        // Final text content
+        System.out.print(message.getText());
+    }
+});</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_response_structure"><a class="anchor" href="#_response_structure"></a>Response Structure</h3>
+<div class="paragraph">
+<p>When thinking is enabled, the response contains different types of content:</p>
+</div>
+<table class="tableblock frame-all grid-all stripes-even stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 37.5%;">
+<col style="width: 37.5%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Content Type</th>
+<th class="tableblock halign-left valign-top">Metadata Key</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Thinking Block</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>signature</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Claude&#8217;s reasoning text with a cryptographic signature. In sync mode, the thinking text is in <code>getText()</code> and the signature is in <code>getMetadata().get("signature")</code>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Redacted Thinking</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>data</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Safety-redacted reasoning. Contains only a <code>data</code> marker, no visible text.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Signature (streaming)</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>signature</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">In streaming mode, the signature arrives as a separate delta at the end of a thinking block.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Thinking Delta (streaming)</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>thinking</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Incremental thinking text chunks during streaming. The <code>thinking</code> metadata key is set to <code>true</code>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Text Block</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>(none)</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The final answer text in <code>getText()</code>.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_multi_modal_support"><a class="anchor" href="#_multi_modal_support"></a>Multi-Modal Support</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Anthropic SDK module supports multi-modal inputs, allowing you to send images and PDF documents alongside text in your prompts.</p>
+</div>
+<div class="sect2">
+<h3 id="_image_input"><a class="anchor" href="#_image_input"></a>Image Input</h3>
+<div class="paragraph">
+<p>Send images to Claude for analysis using the <code>Media</code> class:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">var imageResource = new ClassPathResource("/test-image.png");
+
+var userMessage = UserMessage.builder()
+    .text("What do you see in this image?")
+    .media(List.of(new Media(MimeTypeUtils.IMAGE_PNG, imageResource)))
+    .build();
+
+ChatResponse response = chatModel.call(new Prompt(List.of(userMessage)));</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Supported image formats: PNG, JPEG, GIF, WebP. Images can be provided as:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Byte arrays (automatically base64-encoded)</p>
+</li>
+<li>
+<p>HTTPS URLs (passed directly to the API)</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_pdf_document_input"><a class="anchor" href="#_pdf_document_input"></a>PDF Document Input</h3>
+<div class="paragraph">
+<p>Send PDF documents for Claude to analyze:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">var pdfResource = new ClassPathResource("/document.pdf");
+
+var userMessage = UserMessage.builder()
+    .text("Please summarize this document.")
+    .media(List.of(new Media(new MimeType("application", "pdf"), pdfResource)))
+    .build();
+
+ChatResponse response = chatModel.call(new Prompt(List.of(userMessage)));</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_multiple_media_items"><a class="anchor" href="#_multiple_media_items"></a>Multiple Media Items</h3>
+<div class="paragraph">
+<p>You can include multiple images or documents in a single message:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">var userMessage = UserMessage.builder()
+    .text("Compare these two images.")
+    .media(List.of(
+        new Media(MimeTypeUtils.IMAGE_PNG, image1Resource),
+        new Media(MimeTypeUtils.IMAGE_PNG, image2Resource)))
+    .build();</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_citations"><a class="anchor" href="#_citations"></a>Citations</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Anthropic&#8217;s <a href="https://docs.anthropic.com/en/docs/build-with-claude/citations">Citations API</a> allows Claude to reference specific parts of provided documents when generating responses.
+When citation documents are included in a prompt, Claude can cite the source material, and citation metadata (character ranges, page numbers, or content blocks) is returned in the response metadata.</p>
+</div>
+<div class="paragraph">
+<p>Citations help improve:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Accuracy verification</strong>: Users can verify Claude&#8217;s responses against source material</p>
+</li>
+<li>
+<p><strong>Transparency</strong>: See exactly which parts of documents informed the response</p>
+</li>
+<li>
+<p><strong>Compliance</strong>: Meet requirements for source attribution in regulated industries</p>
+</li>
+<li>
+<p><strong>Trust</strong>: Build confidence by showing where information came from</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p><strong>Supported Models</strong></p>
+</div>
+<div class="paragraph">
+<p>Citations are supported on Claude 3.7 Sonnet and Claude 4 models (Opus and Sonnet).</p>
+</div>
+<div class="paragraph">
+<p><strong>Document Types</strong></p>
+</div>
+<div class="paragraph">
+<p>Three types of citation documents are supported:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Plain Text</strong>: Text content with character-level citations</p>
+</li>
+<li>
+<p><strong>PDF</strong>: PDF documents with page-level citations</p>
+</li>
+<li>
+<p><strong>Custom Content</strong>: User-defined content blocks with block-level citations</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_creating_citation_documents"><a class="anchor" href="#_creating_citation_documents"></a>Creating Citation Documents</h3>
+<div class="paragraph">
+<p>Use the <code>AnthropicCitationDocument</code> builder to create documents that can be cited:</p>
+</div>
+<div class="sect3">
+<h4 id="_plain_text_documents"><a class="anchor" href="#_plain_text_documents"></a>Plain Text Documents</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">AnthropicCitationDocument document = AnthropicCitationDocument.builder()
+    .plainText("The Eiffel Tower was completed in 1889 in Paris, France. " +
+               "It stands 330 meters tall and was designed by Gustave Eiffel.")
+    .title("Eiffel Tower Facts")
+    .citationsEnabled(true)
+    .build();</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_pdf_documents"><a class="anchor" href="#_pdf_documents"></a>PDF Documents</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">// From file path
+AnthropicCitationDocument document = AnthropicCitationDocument.builder()
+    .pdfFile("path/to/document.pdf")
+    .title("Technical Specification")
+    .citationsEnabled(true)
+    .build();
+
+// From byte array
+byte[] pdfBytes = loadPdfBytes();
+AnthropicCitationDocument document = AnthropicCitationDocument.builder()
+    .pdf(pdfBytes)
+    .title("Product Manual")
+    .citationsEnabled(true)
+    .build();</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_custom_content_blocks"><a class="anchor" href="#_custom_content_blocks"></a>Custom Content Blocks</h4>
+<div class="paragraph">
+<p>For fine-grained citation control, use custom content blocks:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">AnthropicCitationDocument document = AnthropicCitationDocument.builder()
+    .customContent(
+        "The Great Wall of China is approximately 21,196 kilometers long.",
+        "It was built over many centuries, starting in the 7th century BC.",
+        "The wall was constructed to protect Chinese states from invasions."
+    )
+    .title("Great Wall Facts")
+    .citationsEnabled(true)
+    .build();</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_using_citations_in_requests"><a class="anchor" href="#_using_citations_in_requests"></a>Using Citations in Requests</h3>
+<div class="paragraph">
+<p>Include citation documents in your chat options:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">ChatResponse response = chatModel.call(
+    new Prompt(
+        "When was the Eiffel Tower built and how tall is it?",
+        AnthropicChatOptions.builder()
+            .model("claude-sonnet-4-20250514")
+            .maxTokens(1024)
+            .citationDocuments(document)
+            .build()
+    )
+);</code></pre>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_multiple_documents"><a class="anchor" href="#_multiple_documents"></a>Multiple Documents</h4>
+<div class="paragraph">
+<p>You can provide multiple documents for Claude to reference:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">AnthropicCitationDocument parisDoc = AnthropicCitationDocument.builder()
+    .plainText("Paris is the capital city of France with a population of 2.1 million.")
+    .title("Paris Information")
+    .citationsEnabled(true)
+    .build();
+
+AnthropicCitationDocument eiffelDoc = AnthropicCitationDocument.builder()
+    .plainText("The Eiffel Tower was designed by Gustave Eiffel for the 1889 World's Fair.")
+    .title("Eiffel Tower History")
+    .citationsEnabled(true)
+    .build();
+
+ChatResponse response = chatModel.call(
+    new Prompt(
+        "What is the capital of France and who designed the Eiffel Tower?",
+        AnthropicChatOptions.builder()
+            .model("claude-sonnet-4-20250514")
+            .citationDocuments(parisDoc, eiffelDoc)
+            .build()
+    )
+);</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_accessing_citations"><a class="anchor" href="#_accessing_citations"></a>Accessing Citations</h3>
+<div class="paragraph">
+<p>Citations are returned in the response metadata:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">ChatResponse response = chatModel.call(prompt);
+
+// Get citations from metadata
+List&lt;Citation&gt; citations = (List&lt;Citation&gt;) response.getMetadata().get("citations");
+
+// Optional: Get citation count directly from metadata
+Integer citationCount = (Integer) response.getMetadata().get("citationCount");
+System.out.println("Total citations: " + citationCount);
+
+// Process each citation
+for (Citation citation : citations) {
+    System.out.println("Document: " + citation.getDocumentTitle());
+    System.out.println("Location: " + citation.getLocationDescription());
+    System.out.println("Cited text: " + citation.getCitedText());
+    System.out.println("Document index: " + citation.getDocumentIndex());
+    System.out.println();
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_citation_types"><a class="anchor" href="#_citation_types"></a>Citation Types</h3>
+<div class="paragraph">
+<p>Citations contain different location information depending on the document type:</p>
+</div>
+<div class="sect3">
+<h4 id="_character_location_plain_text"><a class="anchor" href="#_character_location_plain_text"></a>Character Location (Plain Text)</h4>
+<div class="paragraph">
+<p>For plain text documents, citations include character indices:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">Citation citation = citations.get(0);
+if (citation.getType() == Citation.LocationType.CHAR_LOCATION) {
+    int start = citation.getStartCharIndex();
+    int end = citation.getEndCharIndex();
+    String text = citation.getCitedText();
+    System.out.println("Characters " + start + "-" + end + ": " + text);
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_page_location_pdf"><a class="anchor" href="#_page_location_pdf"></a>Page Location (PDF)</h4>
+<div class="paragraph">
+<p>For PDF documents, citations include page numbers:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">Citation citation = citations.get(0);
+if (citation.getType() == Citation.LocationType.PAGE_LOCATION) {
+    int startPage = citation.getStartPageNumber();
+    int endPage = citation.getEndPageNumber();
+    System.out.println("Pages " + startPage + "-" + endPage);
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_content_block_location_custom_content"><a class="anchor" href="#_content_block_location_custom_content"></a>Content Block Location (Custom Content)</h4>
+<div class="paragraph">
+<p>For custom content, citations reference specific content blocks:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">Citation citation = citations.get(0);
+if (citation.getType() == Citation.LocationType.CONTENT_BLOCK_LOCATION) {
+    int startBlock = citation.getStartBlockIndex();
+    int endBlock = citation.getEndBlockIndex();
+    System.out.println("Content blocks " + startBlock + "-" + endBlock);
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_complete_example"><a class="anchor" href="#_complete_example"></a>Complete Example</h3>
+<div class="paragraph">
+<p>Here&#8217;s a complete example demonstrating citation usage:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">// Create a citation document
+AnthropicCitationDocument document = AnthropicCitationDocument.builder()
+    .plainText("Spring AI is an application framework for AI engineering. " +
+               "It provides a Spring-friendly API for developing AI applications. " +
+               "The framework includes abstractions for chat models, embedding models, " +
+               "and vector databases.")
+    .title("Spring AI Overview")
+    .citationsEnabled(true)
+    .build();
+
+// Call the model with the document
+ChatResponse response = chatModel.call(
+    new Prompt(
+        "What is Spring AI?",
+        AnthropicChatOptions.builder()
+            .model("claude-sonnet-4-20250514")
+            .maxTokens(1024)
+            .citationDocuments(document)
+            .build()
+    )
+);
+
+// Display the response
+System.out.println("Response: " + response.getResult().getOutput().getText());
+System.out.println("\nCitations:");
+
+// Process citations
+List&lt;Citation&gt; citations = (List&lt;Citation&gt;) response.getMetadata().get("citations");
+
+if (citations != null &amp;&amp; !citations.isEmpty()) {
+    for (int i = 0; i &lt; citations.size(); i++) {
+        Citation citation = citations.get(i);
+        System.out.println("\n[" + (i + 1) + "] " + citation.getDocumentTitle());
+        System.out.println("    Location: " + citation.getLocationDescription());
+        System.out.println("    Text: " + citation.getCitedText());
+    }
+} else {
+    System.out.println("No citations were provided in the response.");
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_best_practices"><a class="anchor" href="#_best_practices"></a>Best Practices</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Use descriptive titles</strong>: Provide meaningful titles for citation documents to help users identify sources in the citations.</p>
+</li>
+<li>
+<p><strong>Check for null citations</strong>: Not all responses will include citations, so always validate the citations metadata exists before accessing it.</p>
+</li>
+<li>
+<p><strong>Consider document size</strong>: Larger documents provide more context but consume more input tokens and may affect response time.</p>
+</li>
+<li>
+<p><strong>Leverage multiple documents</strong>: When answering questions that span multiple sources, provide all relevant documents in a single request rather than making multiple calls.</p>
+</li>
+<li>
+<p><strong>Use appropriate document types</strong>: Choose plain text for simple content, PDF for existing documents, and custom content blocks when you need fine-grained control over citation granularity.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_citation_document_options"><a class="anchor" href="#_citation_document_options"></a>Citation Document Options</h3>
+<div class="sect3">
+<h4 id="_context_field"><a class="anchor" href="#_context_field"></a>Context Field</h4>
+<div class="paragraph">
+<p>Optionally provide context about the document that won&#8217;t be cited but can guide Claude&#8217;s understanding:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">AnthropicCitationDocument document = AnthropicCitationDocument.builder()
+    .plainText("...")
+    .title("Legal Contract")
+    .context("This is a merger agreement dated January 2024 between Company A and Company B")
+    .build();</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_controlling_citations"><a class="anchor" href="#_controlling_citations"></a>Controlling Citations</h4>
+<div class="paragraph">
+<p>By default, citations are disabled for all documents (opt-in behavior).
+To enable citations, explicitly set <code>citationsEnabled(true)</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">AnthropicCitationDocument document = AnthropicCitationDocument.builder()
+    .plainText("The Eiffel Tower was completed in 1889...")
+    .title("Historical Facts")
+    .citationsEnabled(true)  // Explicitly enable citations for this document
+    .build();</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can also provide documents without citations for background context:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">AnthropicCitationDocument backgroundDoc = AnthropicCitationDocument.builder()
+    .plainText("Background information about the industry...")
+    .title("Context Document")
+    // citationsEnabled defaults to false - Claude will use this but not cite it
+    .build();</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Anthropic requires consistent citation settings across all documents in a request.
+You cannot mix citation-enabled and citation-disabled documents in the same request.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_prompt_caching"><a class="anchor" href="#_prompt_caching"></a>Prompt Caching</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Anthropic&#8217;s <a href="https://docs.anthropic.com/en/docs/build-with-claude/prompt-caching">Prompt Caching</a> reduces costs and latency by caching repeated context across API calls. The Anthropic SDK module supports prompt caching with configurable strategies, TTL, and per-message-type settings.</p>
+</div>
+<div class="sect2">
+<h3 id="_caching_strategies"><a class="anchor" href="#_caching_strategies"></a>Caching Strategies</h3>
+<div class="paragraph">
+<p>Five caching strategies are available via <code>AnthropicCacheStrategy</code>:</p>
+</div>
+<table class="tableblock frame-all grid-all stripes-even stretch">
+<colgroup>
+<col style="width: 28.5714%;">
+<col style="width: 71.4286%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Strategy</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>NONE</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No caching (default). No cache control headers are added.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>SYSTEM_ONLY</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cache system message content. Uses 1 cache breakpoint.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>TOOLS_ONLY</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cache tool definitions only. Uses 1 cache breakpoint.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>SYSTEM_AND_TOOLS</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cache both system messages and tool definitions. Uses 2 cache breakpoints.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>CONVERSATION_HISTORY</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cache system messages, tool definitions, and conversation messages. Uses up to 4 cache breakpoints.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Anthropic allows a maximum of 4 cache breakpoints per request. The implementation tracks breakpoint usage and stops adding cache control once the limit is reached.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_basic_usage_2"><a class="anchor" href="#_basic_usage_2"></a>Basic Usage</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">var options = AnthropicChatOptions.builder()
+    .model("claude-sonnet-4-20250514")
+    .maxTokens(1024)
+    .cacheOptions(AnthropicCacheOptions.builder()
+        .strategy(AnthropicCacheStrategy.SYSTEM_ONLY)
+        .build())
+    .build();
+
+ChatResponse response = chatModel.call(
+    new Prompt(List.of(
+        new SystemMessage("You are an expert assistant with deep domain knowledge..."),
+        new UserMessage("What is the capital of France?")),
+        options));</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_cache_configuration_options"><a class="anchor" href="#_cache_configuration_options"></a>Cache Configuration Options</h3>
+<div class="paragraph">
+<p><code>AnthropicCacheOptions</code> provides fine-grained control over caching behavior:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">var cacheOptions = AnthropicCacheOptions.builder()
+    .strategy(AnthropicCacheStrategy.SYSTEM_AND_TOOLS)
+    .messageTypeTtl(MessageType.SYSTEM, AnthropicCacheTtl.ONE_HOUR)     // 1 hour TTL
+    .messageTypeMinContentLength(MessageType.SYSTEM, 100)                   // Min 100 chars
+    .multiBlockSystemCaching(true)                                          // Per-block caching
+    .build();</code></pre>
+</div>
+</div>
+<table class="tableblock frame-all grid-all stripes-even stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 55.5555%;">
+<col style="width: 11.1112%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Option</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>strategy</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The caching strategy to use.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>NONE</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>messageTypeTtl</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TTL per message type. Available values: <code>FIVE_MINUTES</code>, <code>ONE_HOUR</code>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>FIVE_MINUTES</code> for all types</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>messageTypeMinContentLength</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Minimum content length required before caching a message type.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>1</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>contentLengthFunction</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Custom function to compute content length (e.g., token counting).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String::length</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>multiBlockSystemCaching</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">When <code>true</code>, each system message becomes a separate cacheable block; cache control is applied to the second-to-last block (static prefix pattern). When <code>false</code>, all system messages are joined into one block.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>false</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>cacheToolResults</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">When <code>true</code>, a cache breakpoint is placed on the last tool result message of a request so tool outputs are cached across tool-calling rounds. Takes effect with <code>CONVERSATION_HISTORY</code>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>false</code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_caching_tool_results"><a class="anchor" href="#_caching_tool_results"></a>Caching Tool Results</h3>
+<div class="paragraph">
+<p>When a turn triggers tool calls, each round appends an assistant <code>tool_use</code> message and a user <code>tool_result</code> message, and the growing history is sent back to Anthropic on every round. By default the <code>CONVERSATION_HISTORY</code> breakpoint lands on the last user message, so tool results — which are appended after it — fall outside every breakpoint and are billed as uncached input on each round. This is wasteful when tool outputs are large.</p>
+</div>
+<div class="paragraph">
+<p>Enable <code>cacheToolResults</code> to place a breakpoint on the last tool result block of the request. On the next round Anthropic reads the previous round&#8217;s tool results from cache instead of reprocessing them:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">var cacheOptions = AnthropicCacheOptions.builder()
+    .strategy(AnthropicCacheStrategy.CONVERSATION_HISTORY)
+    .cacheToolResults(true)
+    .build();</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The breakpoint moves to the latest tool result on each round, so the previous rounds' tool outputs are read from cache while the newest is written. This consumes one additional cache breakpoint (Anthropic allows up to four per request), leaving room for the tool, system, and last-user breakpoints under <code>CONVERSATION_HISTORY</code>. The TTL and minimum content length are configurable via <code>messageTypeTtl(MessageType.TOOL, &#8230;&#8203;)</code> and <code>messageTypeMinContentLength(MessageType.TOOL, &#8230;&#8203;)</code>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_multi_block_system_caching"><a class="anchor" href="#_multi_block_system_caching"></a>Multi-Block System Caching</h3>
+<div class="paragraph">
+<p>When you have both a static system prompt and dynamic instructions, use multi-block system caching to cache only the static portion:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">var cacheOptions = AnthropicCacheOptions.builder()
+    .strategy(AnthropicCacheStrategy.SYSTEM_ONLY)
+    .multiBlockSystemCaching(true)
+    .build();
+
+ChatResponse response = chatModel.call(
+    new Prompt(List.of(
+        new SystemMessage("You are an expert knowledge base assistant..."),  // Static (cached)
+        new SystemMessage("Today's date is 2025-02-23. User timezone: PST"), // Dynamic
+        new UserMessage("What are the latest updates?")),
+        AnthropicChatOptions.builder()
+            .model("claude-sonnet-4-20250514")
+            .cacheOptions(cacheOptions)
+            .build()));</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_spring_boot_configuration"><a class="anchor" href="#_spring_boot_configuration"></a>Spring Boot Configuration</h3>
+<div class="paragraph">
+<p>Configure prompt caching via <code>application.properties</code> or <code>application.yml</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-properties hljs" data-lang="properties">spring.ai.anthropic.chat.cache-options.strategy=SYSTEM_AND_TOOLS
+spring.ai.anthropic.chat.cache-options.multi-block-system-caching=true</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_accessing_cache_token_usage"><a class="anchor" href="#_accessing_cache_token_usage"></a>Accessing Cache Token Usage</h3>
+<div class="paragraph">
+<p>Cache token metrics are available through the native SDK <code>Usage</code> object:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">ChatResponse response = chatModel.call(prompt);
+
+com.anthropic.models.messages.Usage sdkUsage =
+    (com.anthropic.models.messages.Usage) response.getMetadata().getUsage().getNativeUsage();
+long cacheCreation = sdkUsage.cacheCreationInputTokens().orElse(0L);
+long cacheRead = sdkUsage.cacheReadInputTokens().orElse(0L);
+
+System.out.println("Cache creation tokens: " + cacheCreation);
+System.out.println("Cache read tokens: " + cacheRead);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>On the first request, <code>cacheCreationInputTokens</code> will be non-zero (tokens written to cache). On subsequent requests with the same cached prefix, <code>cacheReadInputTokens</code> will be non-zero (tokens read from cache at reduced cost).</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_conversation_history_caching"><a class="anchor" href="#_conversation_history_caching"></a>Conversation History Caching</h3>
+<div class="paragraph">
+<p>The <code>CONVERSATION_HISTORY</code> strategy caches the entire conversation context, including system messages, tool definitions, and the last user message. This is useful for multi-turn conversations where the growing context would otherwise be re-processed on every request:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">var cacheOptions = AnthropicCacheOptions.builder()
+    .strategy(AnthropicCacheStrategy.CONVERSATION_HISTORY)
+    .build();
+
+var options = AnthropicChatOptions.builder()
+    .model("claude-sonnet-4-20250514")
+    .cacheOptions(cacheOptions)
+    .build();
+
+// First turn
+ChatResponse response1 = chatModel.call(
+    new Prompt(List.of(
+        new SystemMessage("You are a helpful assistant."),
+        new UserMessage("What is machine learning?")),
+        options));
+
+// Second turn - previous context is cached
+ChatResponse response2 = chatModel.call(
+    new Prompt(List.of(
+        new SystemMessage("You are a helpful assistant."),
+        new UserMessage("What is machine learning?"),
+        new AssistantMessage(response1.getResult().getOutput().getText()),
+        new UserMessage("Can you give me an example?")),
+        options));</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_structured_output"><a class="anchor" href="#_structured_output"></a>Structured Output</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Structured output constrains Claude to produce responses conforming to a JSON schema. The Anthropic SDK module also supports Anthropic&#8217;s effort control for tuning response quality vs speed.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p><strong>Model Requirement</strong></p>
+</div>
+<div class="paragraph">
+<p>Structured output and effort control require <code>claude-sonnet-4-6</code> or newer. Older models like <code>claude-sonnet-4-20250514</code> do not support these features.</p>
+</div>
+<div class="paragraph">
+<p><strong>Schema Requirements</strong></p>
+</div>
+<div class="paragraph">
+<p>When using JSON schema output, Anthropic requires <code>"additionalProperties": false</code> for all object types in the schema.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_json_schema_output"><a class="anchor" href="#_json_schema_output"></a>JSON Schema Output</h3>
+<div class="paragraph">
+<p>Constrain Claude&#8217;s responses to a specific JSON schema using the <code>outputSchema</code> convenience method:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">var options = AnthropicChatOptions.builder()
+    .model("claude-sonnet-4-6")
+    .outputSchema("""
+        {
+            "type": "object",
+            "properties": {
+                "name": {"type": "string"},
+                "capital": {"type": "string"},
+                "population": {"type": "integer"}
+            },
+            "required": ["name", "capital"],
+            "additionalProperties": false
+        }
+        """)
+    .build();
+
+ChatResponse response = chatModel.call(new Prompt("Tell me about France.", options));
+// Response text will be valid JSON conforming to the schema</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_effort_control"><a class="anchor" href="#_effort_control"></a>Effort Control</h3>
+<div class="paragraph">
+<p>Control how much compute Claude spends on its response. Lower effort means faster, cheaper responses; higher effort means more thorough reasoning.</p>
+</div>
+<table class="tableblock frame-all grid-all stripes-even stretch">
+<colgroup>
+<col style="width: 28.5714%;">
+<col style="width: 71.4286%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Effort Level</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>LOW</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Fast and concise responses with minimal reasoning</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>MEDIUM</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Balanced trade-off between speed and thoroughness</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>HIGH</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">More thorough reasoning and detailed responses</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>MAX</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Maximum compute for the most thorough possible responses</p></td>
+</tr>
+</tbody>
+</table>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">var options = AnthropicChatOptions.builder()
+    .model("claude-sonnet-4-6")
+    .effort(OutputConfig.Effort.LOW)
+    .build();
+
+ChatResponse response = chatModel.call(new Prompt("What is the capital of France?", options));</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_combined_schema_and_effort"><a class="anchor" href="#_combined_schema_and_effort"></a>Combined Schema and Effort</h3>
+<div class="paragraph">
+<p>You can combine JSON schema output with effort control:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">var options = AnthropicChatOptions.builder()
+    .model("claude-sonnet-4-6")
+    .outputSchema("""
+        {
+            "type": "object",
+            "properties": {
+                "answer": {"type": "integer"},
+                "explanation": {"type": "string"}
+            },
+            "required": ["answer", "explanation"],
+            "additionalProperties": false
+        }
+        """)
+    .effort(OutputConfig.Effort.HIGH)
+    .build();
+
+ChatResponse response = chatModel.call(
+    new Prompt("What is 15 * 23? Show your reasoning.", options));</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_direct_outputconfig"><a class="anchor" href="#_direct_outputconfig"></a>Direct OutputConfig</h3>
+<div class="paragraph">
+<p>For full control, use the SDK&#8217;s <code>OutputConfig</code> directly:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java"><span class="fold-block is-hidden-folded">import com.anthropic.models.messages.OutputConfig;
+import com.anthropic.models.messages.JsonOutputFormat;
+import com.anthropic.core.JsonValue;
+
+</span><span class="fold-block">var outputConfig = OutputConfig.builder()
+    .effort(OutputConfig.Effort.HIGH)
+    .format(JsonOutputFormat.builder()
+        .schema(JsonOutputFormat.Schema.builder()
+            .putAdditionalProperty("type", JsonValue.from("object"))
+            .putAdditionalProperty("properties", JsonValue.from(Map.of(
+                "name", Map.of("type", "string"))))
+            .putAdditionalProperty("additionalProperties", JsonValue.from(false))
+            .build())
+        .build())
+    .build();
+
+var options = AnthropicChatOptions.builder()
+    .model("claude-sonnet-4-6")
+    .outputConfig(outputConfig)
+    .build();
+
+ChatResponse response = chatModel.call(new Prompt("Tell me about France.", options));</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_structuredoutputchatoptions_interface"><a class="anchor" href="#_structuredoutputchatoptions_interface"></a>StructuredOutputChatOptions Interface</h3>
+<div class="paragraph">
+<p><code>AnthropicChatOptions</code> implements the <code>StructuredOutputChatOptions</code> interface, which provides portable <code>getOutputSchema()</code> method. This allows structured output to work with Spring AI&#8217;s generic structured output infrastructure.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_service_tier"><a class="anchor" href="#_service_tier"></a>Service Tier</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Anthropic offers different <a href="https://docs.claude.com/en/api/service-tiers">service tiers</a> that control capacity routing for API requests. You can use <code>AnthropicServiceTier.AUTO</code> to opportunistically use priority capacity (lower latency) when available, or <code>STANDARD_ONLY</code> to always use standard capacity.</p>
+</div>
+<div class="paragraph">
+<p>Via Spring Boot properties:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-properties hljs" data-lang="properties">spring.ai.anthropic.chat.service-tier=auto</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Or programmatically per-request:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">var options = AnthropicChatOptions.builder()
+    .serviceTier(AnthropicServiceTier.AUTO)
+    .build();
+
+ChatResponse response = chatModel.call(new Prompt("Hello", options));</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_per_request_http_headers"><a class="anchor" href="#_per_request_http_headers"></a>Per-Request HTTP Headers</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Anthropic SDK module supports per-request HTTP headers, which are injected into individual API calls. This is distinct from <code>customHeaders</code> (which are set at the client level for all requests).</p>
+</div>
+<div class="paragraph">
+<p>Per-request headers are useful for:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Request tracking</strong>: Adding correlation IDs or trace headers per request</p>
+</li>
+<li>
+<p><strong>Beta API access</strong>: Including beta feature headers for specific requests</p>
+</li>
+<li>
+<p><strong>Routing</strong>: Adding routing or priority headers for load balancing</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">var options = AnthropicChatOptions.builder()
+    .httpHeaders(Map.of(
+        "X-Request-Id", "req-12345",
+        "X-Custom-Tracking", "my-tracking-value"))
+    .build();
+
+ChatResponse response = chatModel.call(new Prompt("Hello", options));</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<code>httpHeaders</code> are per-request and set via <code>MessageCreateParams.putAdditionalHeader()</code>. They do not affect other requests. For headers that should apply to all requests, use <code>customHeaders</code> instead.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_sample_controller"><a class="anchor" href="#_sample_controller"></a>Sample Controller</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Here is an example of a simple <code>@RestController</code> class that uses the chat model for text generations:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@RestController
+public class ChatController {
+
+    private final AnthropicChatModel chatModel;
+
+    public ChatController() {
+        var options = AnthropicChatOptions.builder()
+            .model("claude-sonnet-4-20250514")
+            .maxTokens(1024)
+            .apiKey(System.getenv("ANTHROPIC_API_KEY"))
+            .build();
+        this.chatModel = AnthropicChatModel.builder()
+            .options(options)
+            .build();
+    }
+
+    @GetMapping("/ai/generate")
+    public Map&lt;String, String&gt; generate(
+            @RequestParam(value = "message", defaultValue = "Tell me a joke") String message) {
+        return Map.of("generation", chatModel.call(message));
+    }
+
+    @GetMapping("/ai/generateStream")
+    public Flux&lt;ChatResponse&gt; generateStream(
+            @RequestParam(value = "message", defaultValue = "Tell me a joke") String message) {
+        Prompt prompt = new Prompt(new UserMessage(message));
+        return chatModel.stream(prompt);
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_accessing_the_raw_response"><a class="anchor" href="#_accessing_the_raw_response"></a>Accessing the Raw Response</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The full Anthropic SDK <code>Message</code> object is available in the response metadata under the <code>"anthropic-response"</code> key. This provides access to any fields not explicitly mapped by Spring AI&#8217;s abstraction:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">ChatResponse response = chatModel.call(new Prompt("Hello"));
+
+com.anthropic.models.messages.Message rawMessage =
+    (com.anthropic.models.messages.Message) response.getMetadata().get("anthropic-response");
+
+// Access native SDK fields
+rawMessage.stopReason();    // Optional&lt;StopReason&gt;
+rawMessage.content();       // List&lt;ContentBlock&gt;
+rawMessage.usage();         // Usage with cache token details</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The raw response is available for synchronous calls only. Streaming responses do not include it.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_skills"><a class="anchor" href="#_skills"></a>Skills</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Anthropic&#8217;s <a href="https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview">Skills API</a> extends Claude&#8217;s capabilities with specialized, pre-packaged abilities for document generation.
+Skills enable Claude to create actual downloadable files&#8201;&#8212;&#8201;Excel spreadsheets, PowerPoint presentations, Word documents, and PDFs&#8201;&#8212;&#8201;rather than just describing what these documents might contain.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p><strong>Supported Models</strong></p>
+</div>
+<div class="paragraph">
+<p>Skills are supported on Claude Sonnet 4, Claude Sonnet 4.5, Claude Opus 4, and later models.</p>
+</div>
+<div class="paragraph">
+<p><strong>Requirements</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Skills require the code execution capability (automatically enabled by Spring AI when skills are configured)</p>
+</li>
+<li>
+<p>Maximum of 8 skills per request</p>
+</li>
+<li>
+<p>Generated files are available for download via the Files API for 24 hours</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_pre_built_anthropic_skills"><a class="anchor" href="#_pre_built_anthropic_skills"></a>Pre-built Anthropic Skills</h3>
+<div class="paragraph">
+<p>Spring AI provides type-safe access to Anthropic&#8217;s pre-built skills through the <code>AnthropicSkill</code> enum:</p>
+</div>
+<table class="tableblock frame-all grid-all stripes-even stretch">
+<colgroup>
+<col style="width: 22.2222%;">
+<col style="width: 33.3333%;">
+<col style="width: 44.4445%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Skill</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Generated File Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>XLSX</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Excel spreadsheet generation and manipulation</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>.xlsx</code> (Microsoft Excel)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>PPTX</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PowerPoint presentation creation</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>.pptx</code> (Microsoft PowerPoint)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>DOCX</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Word document generation</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>.docx</code> (Microsoft Word)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>PDF</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PDF document creation</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>.pdf</code> (Portable Document Format)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_basic_usage_3"><a class="anchor" href="#_basic_usage_3"></a>Basic Usage</h3>
+<div class="paragraph">
+<p>Enable skills by adding them to your <code>AnthropicChatOptions</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">ChatResponse response = chatModel.call(
+    new Prompt(
+        "Create an Excel spreadsheet with Q1 2025 sales data. " +
+        "Include columns for Month, Revenue, and Expenses with 3 rows of sample data.",
+        AnthropicChatOptions.builder()
+            .model(Model.CLAUDE_SONNET_4_5)
+            .maxTokens(4096)
+            .skill(AnthropicSkill.XLSX)
+            .build()
+    )
+);
+
+// Claude will generate an actual Excel file
+String responseText = response.getResult().getOutput().getText();
+System.out.println(responseText);
+// Output: "I've created an Excel spreadsheet with your Q1 2025 sales data..."</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_multiple_skills"><a class="anchor" href="#_multiple_skills"></a>Multiple Skills</h3>
+<div class="paragraph">
+<p>You can enable multiple skills in a single request (up to 8):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">ChatResponse response = chatModel.call(
+    new Prompt(
+        "Create a sales report with both an Excel file containing the raw data " +
+        "and a PowerPoint presentation summarizing the key findings.",
+        AnthropicChatOptions.builder()
+            .model(Model.CLAUDE_SONNET_4_5)
+            .maxTokens(8192)
+            .skill(AnthropicSkill.XLSX)
+            .skill(AnthropicSkill.PPTX)
+            .build()
+    )
+);</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_using_anthropicskillcontainer_for_advanced_configuration"><a class="anchor" href="#_using_anthropicskillcontainer_for_advanced_configuration"></a>Using AnthropicSkillContainer for Advanced Configuration</h3>
+<div class="paragraph">
+<p>For more control over skill types and versions, use <code>AnthropicSkillContainer</code> directly:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">AnthropicSkillContainer container = AnthropicSkillContainer.builder()
+    .skill(AnthropicSkill.XLSX)
+    .skill(AnthropicSkill.PPTX, "20251013") // Specific version
+    .build();
+
+ChatResponse response = chatModel.call(
+    new Prompt(
+        "Generate the quarterly report",
+        AnthropicChatOptions.builder()
+            .model(Model.CLAUDE_SONNET_4_5)
+            .maxTokens(4096)
+            .skillContainer(container)
+            .build()
+    )
+);</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_downloading_generated_files"><a class="anchor" href="#_downloading_generated_files"></a>Downloading Generated Files</h3>
+<div class="paragraph">
+<p>When Claude generates files using Skills, the response contains file IDs that can be used to download the actual files via the Files API.
+Spring AI provides the <code>AnthropicSkillsResponseHelper</code> utility class for extracting file IDs and downloading files.</p>
+</div>
+<div class="sect3">
+<h4 id="_extracting_file_ids"><a class="anchor" href="#_extracting_file_ids"></a>Extracting File IDs</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java"><span class="fold-block is-hidden-folded">import org.springframework.ai.anthropic.AnthropicSkillsResponseHelper;
+
+</span><span class="fold-block">ChatResponse response = chatModel.call(prompt);
+
+// Extract all file IDs from the response
+List&lt;String&gt; fileIds = AnthropicSkillsResponseHelper.extractFileIds(response);
+
+for (String fileId : fileIds) {
+    System.out.println("Generated file ID: " + fileId);
+}</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_downloading_all_files"><a class="anchor" href="#_downloading_all_files"></a>Downloading All Files</h4>
+<div class="paragraph">
+<p>The <code>AnthropicSkillsResponseHelper</code> provides a convenience method to download all generated files at once.
+This requires the <code>AnthropicClient</code> instance (the same one used to create the chat model):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java"><span class="fold-block is-hidden-folded">import com.anthropic.client.AnthropicClient;
+
+</span><span class="fold-block">@Autowired
+private AnthropicClient anthropicClient;
+
+// Download all files to a target directory
+Path targetDir = Path.of("generated-files");
+Files.createDirectories(targetDir);
+
+List&lt;Path&gt; savedFiles = AnthropicSkillsResponseHelper.downloadAllFiles(
+        response, anthropicClient, targetDir);
+
+for (Path file : savedFiles) {
+    System.out.println("Downloaded: " + file.getFileName() +
+                       " (" + Files.size(file) + " bytes)");
+}</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_extracting_container_id"><a class="anchor" href="#_extracting_container_id"></a>Extracting Container ID</h4>
+<div class="paragraph">
+<p>For multi-turn conversations with Skills, you can extract the container ID for reuse:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">String containerId = AnthropicSkillsResponseHelper.extractContainerId(response);
+
+if (containerId != null) {
+    System.out.println("Container ID for reuse: " + containerId);
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_complete_example_2"><a class="anchor" href="#_complete_example_2"></a>Complete Example</h3>
+<div class="paragraph">
+<p>Here&#8217;s a complete example showing Skills usage with file download:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@Service
+public class DocumentGenerationService {
+
+    private final AnthropicChatModel chatModel;
+    private final AnthropicClient anthropicClient;
+
+    public DocumentGenerationService(AnthropicChatModel chatModel,
+                                     AnthropicClient anthropicClient) {
+        this.chatModel = chatModel;
+        this.anthropicClient = anthropicClient;
+    }
+
+    public Path generateSalesReport(String quarter, Path outputDir) throws IOException {
+        // Generate Excel report using Skills
+        ChatResponse response = chatModel.call(
+            new Prompt(
+                "Create an Excel spreadsheet with " + quarter + " sales data. " +
+                "Include Month, Revenue, Expenses, and Profit columns.",
+                AnthropicChatOptions.builder()
+                    .model(Model.CLAUDE_SONNET_4_5)
+                    .maxTokens(4096)
+                    .skill(AnthropicSkill.XLSX)
+                    .build()
+            )
+        );
+
+        // Extract file IDs from the response
+        List&lt;String&gt; fileIds = AnthropicSkillsResponseHelper.extractFileIds(response);
+
+        if (fileIds.isEmpty()) {
+            throw new RuntimeException("No file was generated");
+        }
+
+        // Download all generated files
+        List&lt;Path&gt; savedFiles = AnthropicSkillsResponseHelper.downloadAllFiles(
+                response, anthropicClient, outputDir);
+
+        return savedFiles.get(0);
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_best_practices_2"><a class="anchor" href="#_best_practices_2"></a>Best Practices</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Use appropriate models</strong>: Skills work best with Claude Sonnet 4 and later models. Ensure you&#8217;re using a supported model.</p>
+</li>
+<li>
+<p><strong>Set sufficient max tokens</strong>: Document generation can require significant tokens. Use <code>maxTokens(4096)</code> or higher for complex documents.</p>
+</li>
+<li>
+<p><strong>Be specific in prompts</strong>: Provide clear, detailed instructions about document structure, content, and formatting.</p>
+</li>
+<li>
+<p><strong>Handle file downloads promptly</strong>: Generated files expire after 24 hours. Download files soon after generation.</p>
+</li>
+<li>
+<p><strong>Check for file IDs</strong>: Always verify that file IDs were returned before attempting downloads. Some prompts may result in text responses without file generation.</p>
+</li>
+<li>
+<p><strong>Use defensive error handling</strong>: Wrap file operations in try-catch blocks to handle network issues or expired files gracefully.</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">List&lt;String&gt; fileIds = AnthropicSkillsResponseHelper.extractFileIds(response);
+
+if (fileIds.isEmpty()) {
+    // Claude may have responded with text instead of generating a file
+    String text = response.getResult().getOutput().getText();
+    log.warn("No files generated. Response: {}", text);
+    return;
+}
+
+try {
+    List&lt;Path&gt; files = AnthropicSkillsResponseHelper.downloadAllFiles(
+            response, anthropicClient, targetDir);
+    // Process files...
+} catch (IOException e) {
+    log.error("Failed to download file: {}", e.getMessage());
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_web_search"><a class="anchor" href="#_web_search"></a>Web Search</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Anthropic&#8217;s <a href="https://docs.anthropic.com/en/docs/agents-and-tools/tool-use/web-search">Web Search</a> tool allows Claude to search the web during a conversation and use the results to generate cited responses.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Web search is a built-in server-side tool — no external tool callbacks are needed</p>
+</li>
+<li>
+<p>Web search results automatically include citations with URLs</p>
+</li>
+<li>
+<p>You can combine web search with other tools (function calling, code execution, skills) in the same request</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_basic_usage_4"><a class="anchor" href="#_basic_usage_4"></a>Basic Usage</h3>
+<div class="paragraph">
+<p>Enable web search by adding an <code>AnthropicWebSearchTool</code> to your chat options:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">var webSearch = AnthropicWebSearchTool.builder().build();
+
+ChatResponse response = chatModel.call(
+    new Prompt("What is the latest released version of Spring AI?",
+        AnthropicChatOptions.builder()
+            .webSearchTool(webSearch)
+            .build()));
+
+String answer = response.getResult().getOutput().getText();</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_configuration_options"><a class="anchor" href="#_configuration_options"></a>Configuration Options</h3>
+<table class="tableblock frame-all grid-all stripes-even stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 55.5555%;">
+<col style="width: 11.1112%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Option</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">maxUses</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Maximum number of web searches Claude can perform per request</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">allowedDomains</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Restrict search results to these domains only</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">blockedDomains</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Exclude these domains from search results</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">userLocation</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Approximate user location for localizing results (city, country, region, timezone)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_domain_filtering"><a class="anchor" href="#_domain_filtering"></a>Domain Filtering</h3>
+<div class="paragraph">
+<p>Restrict or exclude specific domains from search results:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">var webSearch = AnthropicWebSearchTool.builder()
+    .allowedDomains(List.of("docs.spring.io", "github.com"))
+    .blockedDomains(List.of("example.com"))
+    .maxUses(5)
+    .build();</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_user_location"><a class="anchor" href="#_user_location"></a>User Location</h3>
+<div class="paragraph">
+<p>Provide approximate location to localize search results:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">var webSearch = AnthropicWebSearchTool.builder()
+    .userLocation("San Francisco", "US", "California", "America/Los_Angeles")
+    .build();</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_accessing_web_search_results"><a class="anchor" href="#_accessing_web_search_results"></a>Accessing Web Search Results</h3>
+<div class="paragraph">
+<p>Web search results and citations are available in the response metadata:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">ChatResponse response = chatModel.call(
+    new Prompt("What happened in tech news today?",
+        AnthropicChatOptions.builder()
+            .webSearchTool(AnthropicWebSearchTool.builder().build())
+            .build()));
+
+// Get web search results
+List&lt;AnthropicWebSearchResult&gt; results =
+    (List&lt;AnthropicWebSearchResult&gt;) response.getMetadata().get("web-search-results");
+
+if (results != null) {
+    for (AnthropicWebSearchResult result : results) {
+        System.out.println("Title: " + result.title());
+        System.out.println("URL: " + result.url());
+        System.out.println("Page age: " + result.pageAge());
+    }
+}
+
+// Get web search citations
+List&lt;Citation&gt; citations =
+    (List&lt;Citation&gt;) response.getMetadata().get("citations");
+
+if (citations != null) {
+    for (Citation citation : citations) {
+        if (citation.getType() == Citation.LocationType.WEB_SEARCH_RESULT_LOCATION) {
+            System.out.println("Source: " + citation.getUrl());
+            System.out.println("Title: " + citation.getDocumentTitle());
+            System.out.println("Cited text: " + citation.getCitedText());
+        }
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_spring_boot_configuration_2"><a class="anchor" href="#_spring_boot_configuration_2"></a>Spring Boot Configuration</h3>
+<div class="paragraph">
+<p>Configure web search via <code>application.properties</code> or <code>application.yml</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-properties hljs" data-lang="properties">spring.ai.anthropic.chat.web-search-tool.max-uses=5
+spring.ai.anthropic.chat.web-search-tool.allowed-domains=docs.spring.io,github.com
+spring.ai.anthropic.chat.web-search-tool.user-location.city=San Francisco
+spring.ai.anthropic.chat.web-search-tool.user-location.country=US</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_observability"><a class="anchor" href="#_observability"></a>Observability</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Spring AI emits Micrometer observations at two layers for every Anthropic call:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Chat-model layer.</strong> A <code>gen_ai.client.operation</code> observation wraps every call to <code>AnthropicChatModel.call(&#8230;&#8203;)</code> or <code>.stream(&#8230;&#8203;)</code>, carrying request parameters, response metadata, and token usage. See the <a href="../../observability/index.html" class="xref page">observability reference</a> for the full set of tags and metrics.</p>
+</li>
+<li>
+<p><strong>HTTP layer.</strong> An <code>okhttp.requests</code> observation wraps every HTTP attempt to the Anthropic API, carrying HTTP method, URI, status code, and exception tags. Each request also propagates <code>traceparent</code> on the wire to any downstream services (AI gateways, OpenAI-compatible inference servers, proxies).</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>In a Spring Boot application with <code>spring-boot-starter-actuator</code> and a tracing bridge (<code>micrometer-tracing-bridge-otel</code> or <code>micrometer-tracing-bridge-brave</code>), both layers are wired automatically — no opt-in required.
+For non-Boot applications, pass an <code>ObservationRegistry</code> to <code>AnthropicChatModel.builder()</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">AnthropicChatModel chatModel = AnthropicChatModel.builder()
+    .options(...)
+    .observationRegistry(observationRegistry)
+    .build();</code></pre>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_connection_pool_metrics_opt_in"><a class="anchor" href="#_connection_pool_metrics_opt_in"></a>Connection-pool metrics (opt-in)</h3>
+<div class="paragraph">
+<p>Spring AI can additionally bind OkHttp connection-pool gauges (<code>okhttp.pool.connection.count</code> with <code>state=active|idle</code> and <code>client.kind=sync|async</code>) to the application&#8217;s <code>MeterRegistry</code>.
+These are secondary telemetry — useful for capacity tuning but not required for tracing or per-request latency — so they&#8217;re disabled by default.</p>
+</div>
+<div class="paragraph">
+<p>To enable them in a Spring Boot application:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-properties hljs" data-lang="properties">spring.ai.anthropic.chat.connection-pool-metrics-enabled=true</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For non-Boot applications, pass a <code>MeterRegistry</code> directly to the builder; the gauges bind whenever a registry is supplied:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">AnthropicChatModel chatModel = AnthropicChatModel.builder()
+    .options(...)
+    .observationRegistry(observationRegistry)
+    .meterRegistry(meterRegistry)
+    .build();</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_http_dispatcher_executor_advanced"><a class="anchor" href="#_http_dispatcher_executor_advanced"></a>HTTP dispatcher executor (advanced)</h3>
+<div class="paragraph">
+<p>By default Spring AI manages the OkHttp dispatcher&#8217;s executor — an unbounded pool of platform threads, replicating the SDK&#8217;s stock behavior.
+For workloads with high HTTP concurrency, or to take advantage of Java 21+ virtual threads, you can supply your own <code>ExecutorService</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">AnthropicChatModel chatModel = AnthropicChatModel.builder()
+    .options(...)
+    .dispatcherExecutor(Executors.newVirtualThreadPerTaskExecutor())
+    .build();</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The same executor backs both the sync and async (streaming) clients.
+When you supply your own executor, you own its lifecycle — Spring AI will never call <code>shutdown()</code> on it.
+When omitted, the internal executor is created and cleaned up automatically.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p><strong>Streaming HTTP observations are not parented under the chat-model observation</strong></p>
+</div>
+<div class="paragraph">
+<p>For synchronous calls, the <code>okhttp.requests</code> span is correctly nested under the <code>gen_ai.client.operation</code> span — the full trace tree forms as expected.</p>
+</div>
+<div class="paragraph">
+<p>For streaming calls, the <code>okhttp.requests</code> span fires and is recorded in the registry, the timer is recorded in <code>MeterRegistry</code>, and <code>traceparent</code> is still propagated on the outbound request — but the span is <strong>not</strong> nested under the chat-model span.
+This is because the Anthropic SDK&#8217;s async streaming implementation hops onto <code>ForkJoinPool.commonPool()</code> before invoking Spring AI&#8217;s HTTP client, dropping the calling thread&#8217;s observation context at that boundary.
+Spring AI cannot recover the context from within its HTTP-client wrapper.</p>
+</div>
+<div class="paragraph">
+<p>If you need to correlate streaming HTTP spans with their parent chat-model span in your tracing UI, filter by span name <code>okhttp.requests</code> with host <code>api.anthropic.com</code> and join to the corresponding <code>gen_ai.client.operation</code> span by trace ID or timestamp range.
+Built-in parent linkage for streaming is being pursued upstream in the Anthropic Java SDK.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_logging"><a class="anchor" href="#_logging"></a>Logging</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Enable SDK logging by setting the environment variable:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">export ANTHROPIC_LOG=debug</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_limitations"><a class="anchor" href="#_limitations"></a>Limitations</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The following features are not yet supported:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Amazon Bedrock backend</p>
+</li>
+<li>
+<p>Google Vertex AI backend</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>These features are planned for future releases.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_customizing_the_http_client"><a class="anchor" href="#_customizing_the_http_client"></a>Customizing the HTTP Client</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Spring AI uses the official <code>anthropic-java</code> SDK under the hood and configures its HTTP transport with a custom OkHttp client built by <code>SpringAiAnthropicHttpClient.Builder</code>.
+You can intercept that builder before the underlying <code>OkHttpClient</code> is created by exposing one or more <code>AnthropicHttpClientBuilderCustomizer</code> beans.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@FunctionalInterface
+public interface AnthropicHttpClientBuilderCustomizer {
+    void customize(SpringAiAnthropicHttpClient.Builder builder);
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Typical use cases include:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>registering OkHttp <code>Interceptor</code> instances (authentication, propagation headers, custom logging);</p>
+</li>
+<li>
+<p>swapping the dispatcher <code>ExecutorService</code> (for example, to route async I/O through virtual threads);</p>
+</li>
+<li>
+<p>configuring proxy, SSL, hostname verification, or the connection-pool sizing exposed by the builder.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>When several customizer beans are present in the application context, they are applied in <code>@Order</code> / <code>@Priority</code> order, after Spring AI&#8217;s own defaults, so user code wins.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Each customizer is called <strong>twice</strong> per <code>AnthropicChatModel</code> — once for the synchronous client and once for the asynchronous client that back the model.
+Implementations should be idempotent (i.e. safe to call more than once).
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The same hook is available when wiring the model manually via <code>AnthropicChatModel.Builder</code>.
+In that case the customizers are applied in registration order; <code>@Order</code> annotations have no effect outside of Spring&#8217;s bean container:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">var chatModel = AnthropicChatModel.builder()
+    .options(AnthropicChatOptions.builder().model("claude-sonnet-4-20250514").build())
+    .httpClientBuilderCustomizer(myCustomizer)
+    .build();</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_additional_resources"><a class="anchor" href="#_additional_resources"></a>Additional Resources</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://github.com/anthropics/anthropic-sdk-java">Official Anthropic Java SDK</a></p>
+</li>
+<li>
+<p><a href="https://docs.anthropic.com/">Anthropic API Documentation</a></p>
+</li>
+<li>
+<p><a href="https://docs.anthropic.com/en/docs/about-claude/models">Claude Models</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="bedrock-converse.html">Amazon Bedrock Converse</a></span>
+  <span class="next"><a href="azure-openai-chat.html">Azure OpenAI</a></span>
+</nav>
+</article>  </div>
+</main>
+<div class="modal micromodal-slide" id="modal-versions" aria-hidden="true">
+    <div class="modal__overlay" tabindex="-1" data-micromodal-close>
+        <div class="modal__container" role="dialog" aria-modal="true">
+            <main class="modal__content" id="modal-versions-content">
+              <button data-micromodal-close class="modal-versions-close">
+                <svg width="28px" height="28px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><defs><style>.cls-1h{fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:2px;}</style></defs><title/><g id="cross"><line class="cls-1h" x1="7" x2="25" y1="7" y2="25"/><line class="cls-1h" x1="7" x2="25" y1="25" y2="7"/></g></svg>
+              </button>
+              <div class="colset">
+                <div class="col-left">
+
+                  <ul class="nav-versions">
+                      <li class="component">
+                        <div>
+                          <a class="title" href="../../index.html">Spring AI</a>
+                        </div>                        <div class="version-item is-active">
+                          <div>
+                            <button class="version-toggle" type="button">
+                              <span></span>
+                              Stable
+                            </button>
+                          </div>
+                          <ul class="versions">
+  <li class="version">
+    <a href="../../index.html">
+      2.0.0
+    </a>
+  </li>
+</ul>                        </div>
+                        
+                      </li>
+                  </ul>
+                </div>
+                <div class="col-right">
+                  <ul class="projects">
+  <li>
+    Related Spring Documentation
+    <ul class="projects-list">
+    </ul>
+  </li
+  <li><a href="../../spring-projects.html">All Docs...</a></li>
+</ul>
+                </div>
+              </div>
+            </main>
+        </div>
+    </div>
+</div>
+
+</div>
+<footer class="footer flex">
+    <div id="spring-links flex">
+        <img id="springlogo" src="../../_/img/spring-logo.svg" alt="Spring">
+        <p class="smallest antialiased">Copyright © 2005 - <script>var d = new Date();
+        document.write(d.getFullYear());</script> Broadcom. All Rights Reserved. The term "Broadcom" refers to Broadcom Inc. and/or its subsidiaries.<br /><a href="https://www.vmware.com/help/legal.html">Terms of Use</a> • <a href="https://www.vmware.com/help/privacy.html" rel="noopener noreferrer">Privacy</a> • <a href="https://spring.io/trademarks">Trademark Guidelines</a> <span id="thank-you-mobile">• <a href="https://spring.io/thank-you">Thank you</a></span> • <a href="https://www.vmware.com/help/privacy/california-privacy-rights.html">Your California Privacy Rights</a> • <a class="ot-sdk-show-settings">Cookie Settings</a> <span id="teconsent"></span></p>
+        <p class="smallest antialiased has-gray-text">Apache®, Apache Tomcat®, Apache Kafka®, Apache Cassandra&trade;, and Apache Geode&trade; are trademarks or registered trademarks of the Apache Software Foundation in the United States and/or other countries. Java&trade;, Java&trade; SE, Java&trade; EE, and OpenJDK&trade; are trademarks of Oracle and/or its affiliates. Kubernetes® is a registered trademark of the Linux Foundation in the United States and other countries. Linux® is the registered trademark of Linus Torvalds in the United States and other countries. Windows® and Microsoft® Azure are registered trademarks of Microsoft Corporation. “AWS” and “Amazon Web Services” are trademarks or registered trademarks of Amazon.com Inc. or its affiliates. All other trademarks and copyrights are property of their respective owners and are only mentioned for informative purposes. Other names may be trademarks of their respective owners.</p>
+    </div>
+    <div id="social-icons" class="flex jc-between">
+        <a href="https://www.youtube.com/user/SpringSourceDev" title="Youtube"><svg id="youtube-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"><circle class="cls-1" cx="20" cy="20" r="20"/><path class="cls-2" d="M30.91,14.53a2.89,2.89,0,0,0-2-2C27.12,12,20,12,20,12s-7.12,0-8.9.47a2.9,2.9,0,0,0-2,2A30.56,30.56,0,0,0,8.63,20a30.44,30.44,0,0,0,.46,5.47,2.89,2.89,0,0,0,2,2C12.9,28,20,28,20,28s7.12,0,8.9-.47a2.87,2.87,0,0,0,2-2A30.56,30.56,0,0,0,31.37,20,28.88,28.88,0,0,0,30.91,14.53ZM17.73,23.41V16.59L23.65,20Z"/></svg></a>
+        <a href="https://github.com/spring-projects" title="GitHub"><svg id="github-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 75.93 75.93"><path class="cls-1" d="M38,0a38,38,0,1,0,38,38A38,38,0,0,0,38,0Z"/></g><path class="cls-2" d="M38,15.59A22.95,22.95,0,0,0,30.71,60.3c1.15.21,1.57-.5,1.57-1.11s0-2,0-3.9c-6.38,1.39-7.73-3.07-7.73-3.07A6.09,6.09,0,0,0,22,48.86c-2.09-1.42.15-1.39.15-1.39a4.81,4.81,0,0,1,3.52,2.36c2,3.5,5.37,2.49,6.67,1.91a4.87,4.87,0,0,1,1.46-3.07c-5.09-.58-10.45-2.55-10.45-11.34a8.84,8.84,0,0,1,2.36-6.15,8.29,8.29,0,0,1,.23-6.07s1.92-.62,6.3,2.35a21.82,21.82,0,0,1,11.49,0c4.38-3,6.3-2.35,6.3-2.35a8.29,8.29,0,0,1,.23,6.07,8.84,8.84,0,0,1,2.36,6.15c0,8.81-5.37,10.75-10.48,11.32a5.46,5.46,0,0,1,1.56,4.25c0,3.07,0,5.54,0,6.29s.42,1.33,1.58,1.1A22.94,22.94,0,0,0,38,15.59Z"/></svg></a>
+        <a href="https://twitter.com/springcentral" title="Twitter"><svg id="twitter-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 75.93 75.93"><circle class="cls-1" cx="37.97" cy="37.97" r="37.97"/><path id="Twitter-2" data-name="Twitter" class="cls-2" d="M55.2,22.73a15.43,15.43,0,0,1-4.88,1.91,7.56,7.56,0,0,0-5.61-2.49A7.78,7.78,0,0,0,37,30a7.56,7.56,0,0,0,.2,1.79,21.63,21.63,0,0,1-15.84-8.23,8,8,0,0,0,2.37,10.52,7.66,7.66,0,0,1-3.48-1v.09A7.84,7.84,0,0,0,26.45,41a7.54,7.54,0,0,1-2,.28A7.64,7.64,0,0,1,23,41.09a7.71,7.71,0,0,0,7.18,5.47,15.21,15.21,0,0,1-9.55,3.37,15.78,15.78,0,0,1-1.83-.11,21.41,21.41,0,0,0,11.78,3.54c14.13,0,21.86-12,21.86-22.42,0-.34,0-.68,0-1a15.67,15.67,0,0,0,3.83-4.08,14.9,14.9,0,0,1-4.41,1.24A7.8,7.8,0,0,0,55.2,22.73Z"/></svg></a>
+    </div>
+</footer>
+<script src="../../_/js/vendor/import.js"></script>
+<script src="../../_/js/site.js"></script>
+<script async src="../../_/js/vendor/highlight.js"></script>
+<script async src="../../_/js/vendor/asciidoctor-tabs.js" data-sync-storage-key="docs:preferred-tab"></script>
+
+<div class="modal micromodal-slide" id="modal-1" aria-hidden="true">
+    <div class="modal__overlay" tabindex="-1" data-micromodal-close>
+        <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="modal-1-title">
+            <main class="modal__content" id="modal-1-content">
+                <div id="searchbox"></div>
+                <div id="counter"></div>
+                <div class="search-link-box">
+                    <a class="search-link" href="../../search.html">Search in all Spring Docs</a>
+                </div>
+                <div class="search-by">
+                    <a target="_blank" rel="noopener noreferrer" href="https://www.algolia.com/" aria-label="Search by Algolia">
+                        <img class="light" width="140" src="../../_/img/algolia-light.svg" />
+                        <img class="dark" width="140" src="../../_/img/algolia-dark.svg" />
+                    </a>
+                </div>
+                <div id="hits"></div>
+            </main>
+        </div>
+    </div>
+</div>
+
+<script src="https://unpkg.com/hotkeys-js/dist/hotkeys.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/algoliasearch@4.17.0/dist/algoliasearch-lite.umd.js" integrity="sha256-Lf9DrpGmcRip6OQzbcL6lnvNmoZNSKpyQX5pMlwatWE=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@4.54.1/dist/instantsearch.production.min.js" integrity="sha256-xYsZPDeNjYNTBWLvqD2Lxe98hOxcDgOHyMPfz4tVAbk=" crossorigin="anonymous"></script>
+<script async id="search-script" src="../../_/js/vendor/search.js" data-app-id="WB1FQYI187" data-api-key="c2e84f15fa630d534f1c62b1c413bb77" data-index-name="springdocs" data-stylesheet="../../_/css/vendor/search.css" data-page-version="2.0.0" data-page-component="ai"></script>
+  </body>
+</html>
